@@ -9,7 +9,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 import 'vuetify/styles';
-import '@mdi/font/css/materialdesignicons.css'
+import '@mdi/font/css/materialdesignicons.css';
 import 'vue3-easy-data-table/dist/style.css';
 
 const app = createApp(App);
@@ -20,7 +20,7 @@ const vuetify = createVuetify({
 });
 app.component('easy-date-table', Vue3EasyDataTable);
 
-loadFonts()
+loadFonts();
 app.use(vuetify);
 app.use(createPinia());
 app.use(router);
