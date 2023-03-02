@@ -1,28 +1,56 @@
+import Link, { LinkProps } from 'next/link'
+
 const variants = {
   default: 'bg-brand-600 shadow-[8px_9px_rgba(0,0,0,1)] text-white',
   outline: 'border-2 border-black text-inherit',
 }
 
-type Props = {
+type BaseProps = {
   className?: string
   variant?: keyof typeof variants
   children: React.ReactNode
-} & React.ComponentPropsWithoutRef<'button'> &
+}
+
+type ButtonProps = BaseProps &
+  React.ComponentPropsWithoutRef<'button'> &
   React.ComponentPropsWithoutRef<'a'>
 
-export default function Button({
+type ButtonLinkProps = BaseProps & LinkProps
+
+export function Button({
   className,
   children,
   variant = 'default',
   ...props
-}: Props) {
+}: ButtonProps) {
   const El = props.href ? 'a' : 'button'
+
   return (
     <El
-      className={`flex h-full items-center rounded py-6 px-10 text-2xl font-medium leading-none ${variants[variant]} ${className}`}
+      className={`flex h-full items-center rounded py-6 px-10 text-2xl font-medium leading-none ${
+        variants[variant]
+      } ${className ? className : ''}`}
       {...props}
     >
       {children}
     </El>
+  )
+}
+
+export function ButtonAsLink({
+  className,
+  children,
+  variant = 'default',
+  ...props
+}: ButtonLinkProps) {
+  return (
+    <Link
+      className={`flex h-full items-center rounded py-6 px-10 text-2xl font-medium leading-none ${
+        variants[variant]
+      } ${className ? className : ''}`}
+      {...props}
+    >
+      {children}
+    </Link>
   )
 }

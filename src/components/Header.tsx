@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Button from './Button'
+import { ButtonAsLink } from './Button'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import Image from 'next/image'
 
@@ -97,9 +97,9 @@ export default function Header() {
         >
           +7 (904) 494-55-66
         </a>
-        <Button href='donate' className='inline h-full'>
+        <ButtonAsLink href='donate' className='inline h-full'>
           Пожертвовать
-        </Button>
+        </ButtonAsLink>
       </div>
     </header>
   )
