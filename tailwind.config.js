@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -12,6 +14,9 @@ module.exports = {
         pink: {
           200: '#E8D3E2',
         },
+      },
+      fontFamily: {
+        sans: ['var(--font-onest)', ...fontFamily.sans],
       },
       gridTemplateColumns: {
         main: 'minmax(2rem, 1fr) repeat(10, minmax(0, 10rem)) minmax(2rem, 1fr)',
