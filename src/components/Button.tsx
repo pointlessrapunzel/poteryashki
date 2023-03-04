@@ -17,8 +17,12 @@ type ButtonProps = BaseProps &
 
 type ButtonLinkProps = BaseProps & LinkProps
 
+function cls(variant: keyof typeof variants, className = '') {
+  return `inline-flex items-center rounded py-6 px-10 text-2xl font-medium leading-none ${variants[variant]} ${className}`
+}
+
 export function Button({
-  className,
+  className = '',
   children,
   variant = 'default',
   ...props
@@ -26,30 +30,20 @@ export function Button({
   const El = props.href ? 'a' : 'button'
 
   return (
-    <El
-      className={`flex h-full items-center rounded py-6 px-10 text-2xl font-medium leading-none ${
-        variants[variant]
-      } ${className ? className : ''}`}
-      {...props}
-    >
+    <El className={cls(variant, className)} {...props}>
       {children}
     </El>
   )
 }
 
 export function ButtonAsLink({
-  className,
+  className = '',
   children,
   variant = 'default',
   ...props
 }: ButtonLinkProps) {
   return (
-    <Link
-      className={`flex h-full items-center rounded py-6 px-10 text-2xl font-medium leading-none ${
-        variants[variant]
-      } ${className ? className : ''}`}
-      {...props}
-    >
+    <Link className={cls(variant, className)} {...props}>
       {children}
     </Link>
   )
