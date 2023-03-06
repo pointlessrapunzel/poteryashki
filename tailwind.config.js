@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         brand: {
           200: '#F3D27D',
+          300: '#FFD569',
           400: '#EC912C',
           600: '#EF6A29',
           800: '#D65110',
