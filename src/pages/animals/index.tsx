@@ -12,8 +12,6 @@ export default function Animals() {
       <Head>
         <title>Наши животные | Потеряшки</title>
         <meta name='description' content='' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='grid grid-cols-main bg-brand-200 py-28'>
         <div className='col-contain'>

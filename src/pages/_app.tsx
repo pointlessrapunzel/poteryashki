@@ -22,6 +22,11 @@ const onestFont = localFont({
       style: 'normal',
     },
     {
+      path: '../assets/fonts/onest2/OnestRegular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
       path: '../assets/fonts/onest2/OnestLight.woff2',
       weight: '300',
       style: 'normal',
