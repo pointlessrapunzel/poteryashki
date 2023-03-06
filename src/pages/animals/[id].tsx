@@ -83,7 +83,6 @@ export default function Animal() {
       <Head>
         <title>{animal.name} | Потеряшки</title>
         <meta name='description' content='' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='grid grid-cols-main bg-brand-200 py-28'>
         <div className='col-contain mb-12 text-xl font-light'>
