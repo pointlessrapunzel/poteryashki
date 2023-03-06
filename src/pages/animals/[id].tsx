@@ -81,7 +81,7 @@ export default function Animal() {
   return (
     <>
       <Head>
-        <title>{animal.name} | Потеряшки</title>
+        <title>{`${animal.name} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
       <main className='grid grid-cols-main bg-brand-200 py-28'>
