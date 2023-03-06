@@ -473,7 +473,10 @@ function ContactUs() {
           <div className='basis-1/3'>
             <div>
               <label htmlFor='contact-name'>Имя</label>
-              <Card className='mt-3 p-0 focus-within:border-brand-600'>
+              <Card
+                padding='p-0'
+                className='mt-3 focus-within:border-brand-600'
+              >
                 <input
                   className='block w-full bg-neutral-100 p-6 text-2xl  focus-visible:outline-none'
                   type='text'
@@ -484,7 +487,10 @@ function ContactUs() {
             </div>
             <div className='mt-7'>
               <label htmlFor='contact-details'>Email или телефон</label>
-              <Card className='mt-3 p-0 focus-within:border-brand-600'>
+              <Card
+                padding='p-0'
+                className='mt-3 focus-within:border-brand-600'
+              >
                 <input
                   className='block w-full bg-neutral-100 p-6 text-2xl focus-visible:border-brand-400 focus-visible:outline-none'
                   type='text'
@@ -499,9 +505,9 @@ function ContactUs() {
           </div>
           <div className='basis-2/3'>
             <label htmlFor='contact-message'>Сообщение</label>
-            <Card className='mt-3 p-0 focus-within:border-brand-600'>
+            <Card padding='p-0' className='mt-3 focus-within:border-brand-600'>
               <textarea
-                className='w-full border-dashed bg-neutral-100 p-6 focus-visible:border-brand-400 focus-visible:outline-none'
+                className='w-full border-dashed bg-neutral-100 p-6 text-2xl focus-visible:border-brand-400 focus-visible:outline-none'
                 name='message'
                 id='contact-message'
                 cols={30}
