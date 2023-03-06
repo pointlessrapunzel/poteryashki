@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-stroke {
+  --stoke-color: black;
+  text-shadow: 1px 1px 0 var(--stoke-color), -1px -1px 0 var(--stoke-color),
+    1px -1px 0 var(--stoke-color), -1px 1px 0 var(--stoke-color),
+    1px 1px 0 var(--stoke-color);
+}

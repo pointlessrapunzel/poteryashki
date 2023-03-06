@@ -2,12 +2,18 @@ import localFont from '@next/font/local'
 import Header from '@/components/Header'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import Footer from '@/components/Footer'
 
 const onestFont = localFont({
   src: [
     {
       path: '../assets/fonts/onest2/OnestBlack.woff2',
       weight: '900',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/onest2/OnestExtraBold.woff2',
+      weight: '800',
       style: 'normal',
     },
     {
@@ -26,10 +32,12 @@ const onestFont = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${onestFont.variable} font-sans`}>
+    <div
+      className={`${onestFont.variable} bg-neutral-100 font-sans font-medium`}
+    >
       <Header />
-      <Component className={`hello`} {...pageProps} />
-      <footer></footer>
+      <Component {...pageProps} />
+      <Footer />
     </div>
   )
 }

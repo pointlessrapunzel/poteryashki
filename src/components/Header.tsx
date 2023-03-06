@@ -60,7 +60,7 @@ function NavItem({ item }: { item: NavItem }) {
           <NavigationMenu.Trigger>
             <NavLink href={url}>{label}</NavLink>
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className='absolute top-12 w-full min-w-max rounded bg-brand-200 px-6 py-6 text-xl leading-none'>
+          <NavigationMenu.Content className='absolute top-12 w-full min-w-max rounded bg-brand-200 px-6 py-6 text-xl leading-none shadow'>
             <ul className='flex flex-col gap-6'>
               {links.map((l) => (
                 <li key={l.label}>
@@ -77,7 +77,7 @@ function NavItem({ item }: { item: NavItem }) {
 
 export default function Header() {
   return (
-    <header className='grid h-24 grid-cols-main text-xl font-medium 2xl:text-2xl'>
+    <header className='grid h-24 grid-cols-main text-xl 2xl:text-2xl'>
       <div className='col-contain flex items-center justify-between gap-9'>
         <div className='min-w-min shrink-0'>
           <Link href={'/'}>
