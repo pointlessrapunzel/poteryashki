@@ -11,29 +11,29 @@ type Props = {
 const navItems = [
   {
     label: 'Наши животные',
-    url: 'animals',
+    url: '/animals',
     links: [
-      { label: 'Кошки', url: 'animals/cats' },
-      { label: 'Котята', url: 'animals/kittens' },
-      { label: 'Собаки', url: 'animals/dogs' },
-      { label: 'Щенки', url: 'animals/puppies' },
+      { label: 'Кошки', url: '/animals?cats' },
+      { label: 'Котята', url: '/animals?kittens' },
+      { label: 'Собаки', url: '/animals?dogs' },
+      { label: 'Щенки', url: '/animals?puppies' },
     ],
   },
   {
     label: 'Как помочь',
-    url: 'help',
+    url: '/help',
     links: [
-      { label: 'Пожертвовать', url: 'donate' },
-      { label: 'Взять на передержку', url: '#' },
-      { label: 'Помочь транспортом', url: '#' },
-      { label: 'Пополнить баланс ГЛ', url: '#' },
-      { label: 'Передать вещи', url: '#' },
-      { label: 'Стать партнером', url: '#' },
-      { label: 'Стать волонтером', url: '#' },
+      { label: 'Пожертвовать', url: '/donate' },
+      { label: 'Взять на передержку', url: '/#' },
+      { label: 'Помочь транспортом', url: '/#' },
+      { label: 'Пополнить баланс ГЛ', url: '/#' },
+      { label: 'Передать вещи', url: '/#' },
+      { label: 'Стать партнером', url: '/#' },
+      { label: 'Стать волонтером', url: '/#' },
     ],
   },
-  { label: 'Новости', url: 'news' },
-  { label: 'Отчеты', url: 'reports' },
+  { label: 'Новости', url: '/news' },
+  { label: 'Отчеты', url: '/reports' },
 ]
 
 type NavItem = (typeof navItems)[number]
@@ -97,7 +97,7 @@ export default function Header() {
         >
           +7 (904) 494-55-66
         </a>
-        <ButtonAsLink href='donate' className='inline h-full'>
+        <ButtonAsLink href='/donate' className='inline h-full'>
           Пожертвовать
         </ButtonAsLink>
       </div>
