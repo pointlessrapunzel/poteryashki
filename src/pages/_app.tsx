@@ -37,14 +37,16 @@ const onestFont = localFont({
       style: 'normal',
     },
   ],
-  variable: '--font-onest',
 })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div
-      className={`${onestFont.variable} bg-neutral-100 font-sans font-medium`}
-    >
+    <div className={`bg-neutral-100 font-sans font-medium`}>
+      <style jsx global>{`
+        :root {
+          --font-onest: ${onestFont.style.fontFamily};
+        }
+      `}</style>
       <Header />
       <Component {...pageProps} />
       <Footer />
