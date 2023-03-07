@@ -66,7 +66,7 @@ function HeroSection() {
           <ButtonAsLink className='text-4xl' href='/animals'>
             Найти друга
           </ButtonAsLink>
-          <ButtonAsLink className='text-4xl' variant='outline' href='/help'>
+          <ButtonAsLink className='text-4xl' variant='outline' href='/#help'>
             Как помочь?
           </ButtonAsLink>
         </div>
@@ -88,19 +88,15 @@ function AnimalsSection() {
     // relative and z-index needed for the hero dog image to stay behind
     <section className='relative z-10 grid grid-cols-main bg-brand-200 py-24'>
       <h2 className='col-contain text-center text-6xl'>Наши животные</h2>
-      <div className='col-contain'>
-        <div className='col-contain mt-20 flex gap-9'>
-          {links.map((l) => (
-            <Link key={l.url} href={`/animals/${l.url}`}>
-              <Card>
-                <Image src={l.image} width={320} height={345} alt='' />
-                <h3 className='mt-4 text-center text-2xl uppercase'>
-                  {l.label}
-                </h3>
-              </Card>
-            </Link>
-          ))}
-        </div>
+      <div className='col-contain mt-20 flex gap-9'>
+        {links.map((l) => (
+          <Link key={l.url} href={`/animals/${l.url}`}>
+            <Card>
+              <Image src={l.image} width={320} height={345} alt='' />
+              <h3 className='mt-4 text-center text-2xl uppercase'>{l.label}</h3>
+            </Card>
+          </Link>
+        ))}
       </div>
     </section>
   )
@@ -324,7 +320,10 @@ function Help() {
   ]
 
   return (
-    <section className='grid grid-cols-main gap-y-24 bg-brand-200 py-24'>
+    <section
+      id='help'
+      className='grid grid-cols-main gap-y-24 bg-brand-200 py-24'
+    >
       <h2 className='col-contain text-center text-6xl'>Как нам помочь</h2>
       <div className='col-contain grid grid-cols-4 place-content-center place-items-center gap-x-32 gap-y-24'>
         {items.map((el) => (
@@ -470,7 +469,7 @@ function ContactUs() {
       <div className='col-contain'>
         <h2 className='text-center text-6xl'>Напишите нам</h2>
         <form className='mt-16 flex w-full justify-between gap-20 text-4xl'>
-          <div className='basis-1/3'>
+          <div className='flex basis-1/3 flex-col items-center gap-7'>
             <div>
               <label htmlFor='contact-name'>Имя</label>
               <Card
@@ -485,7 +484,7 @@ function ContactUs() {
                 />
               </Card>
             </div>
-            <div className='mt-7'>
+            <div>
               <label htmlFor='contact-details'>Email или телефон</label>
               <Card
                 padding='p-0'
@@ -499,7 +498,7 @@ function ContactUs() {
                 />
               </Card>
             </div>
-            <Button className='mt-16 text-4xl' type='submit'>
+            <Button className='mt-auto text-4xl' type='submit'>
               Отправить
             </Button>
           </div>

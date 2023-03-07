@@ -21,7 +21,7 @@ const navItems = [
   },
   {
     label: 'Как помочь',
-    url: '/help',
+    url: '/#help',
     links: [
       { label: 'Пожертвовать', url: '/donate' },
       { label: 'Взять на передержку', url: '/#' },
