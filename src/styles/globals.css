@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* remove arrows from the number input */
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 .text-stroke {
   --stoke-color: black;
   text-shadow: 1px 1px 0 var(--stoke-color), -1px -1px 0 var(--stoke-color),

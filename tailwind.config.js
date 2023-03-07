@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         brand: {
+          100: '#FCF1D5',
           200: '#F3D27D',
           300: '#FFD569',
           400: '#EC912C',
@@ -20,6 +21,7 @@ module.exports = {
         neutral: {
           100: '#F1F1F1',
         },
+        highlight: '#97173C',
       },
       fontFamily: {
         sans: ['var(--font-onest)', ...fontFamily.sans],
