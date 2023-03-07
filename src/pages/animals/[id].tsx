@@ -7,6 +7,7 @@ import cats from '../../data/animals/cats.json'
 import iconForward from '@/../public/icons/icon-arrow-forward.svg'
 import iconBack from '@/../public/icons/icon-arrow-back.svg'
 import * as Tooltip from '@radix-ui/react-tooltip'
+import AdoptPetModal from '@/components/AdoptPetModal'
 
 const animal = {
   name: 'Каскад',
@@ -117,7 +118,7 @@ export default function Animal() {
                     rx='4'
                     fill='#F1F1F1'
                     stroke='#000'
-                    stroke-width='2'
+                    strokeWidth='2'
                   />
                   <path
                     d='M16.141 25 6 13.624l2.535-2.844 7.606 8.532L32.465 1 35 3.844 16.141 25Z'
@@ -132,8 +133,8 @@ export default function Animal() {
             Нажмите на кнопку ниже, мы свяжемся с вами и расскажем, как взять
             эту милаху к себе!
           </p>
-          <div className=''>
-            <ButtonAsLink href={'/'}>Взять питомца</ButtonAsLink>
+          <div>
+            <AdoptPetModal />
           </div>
         </div>
         <div className='col-start-2 col-end-8 mt-16 text-3xl leading-snug'>
