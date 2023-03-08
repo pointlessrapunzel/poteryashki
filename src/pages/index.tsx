@@ -394,7 +394,7 @@ function Partners() {
         ))}
       </div>
       <ButtonAsLink
-        href='/news'
+        href='/help/partner'
         className='col-span-full justify-self-center text-4xl'
       >
         Стать партнером
