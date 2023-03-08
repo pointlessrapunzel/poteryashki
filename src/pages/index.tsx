@@ -8,8 +8,16 @@ import heroDog from '@/../public/images/hero-dog.png'
 import aboutCat from '@/../public/images/about-cat.png'
 import videoPlaceholder from '@/../public/images/video-placeholder.png'
 import ContactForm from '@/components/ContactForm'
+import { getAllProgramsData } from '@/lib/getProgramsData'
 
-export default function Home() {
+type ProgramsData = ReturnType<typeof getAllProgramsData>
+
+type Props = {
+  programsData: ProgramsData
+}
+
+export default function Home({ programsData }: Props) {
+  console.log(programsData)
   return (
     <>
       <Head>
@@ -27,13 +35,22 @@ export default function Home() {
         <Stats />
         <Team />
         <Help />
-        <Programs />
+        <Programs programs={programsData} />
         <News />
         <Partners />
         <ContactForm />
       </main>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const programsData = getAllProgramsData()
+  return {
+    props: {
+      programsData,
+    },
+  }
 }
 
 function HeroSection() {
@@ -340,24 +357,8 @@ function Help() {
   )
 }
 
-function Programs() {
-  const items = [
-    {
-      image: '/images/program-1.png',
-      text: 'Подари счастливую жизнь',
-      url: '1',
-    },
-    {
-      image: '/images/program-2.png',
-      text: 'Отлов-стерилизация-возврат',
-      url: '2',
-    },
-    {
-      image: '/images/program-3.png',
-      text: 'Горячая линия',
-      url: '3',
-    },
-  ]
+function Programs(props: { programs: ProgramsData }) {
+  const items = props.programs
 
   return (
     <section className='grid grid-cols-main gap-y-20 py-24'>
@@ -366,12 +367,12 @@ function Programs() {
         {items.map((i) => (
           <Link
             className='flex basis-[390px] text-center text-2xl font-extrabold uppercase'
-            key={i.url}
-            href={`/programs/${i.url}`}
+            key={i.slug}
+            href={`/programs/${i.slug}`}
           >
             <Card bgColor='bg-brand-200'>
-              <Image src={i.image} width={340} height={345} alt='' />
-              <p className='mt-5'>{i.text}</p>
+              <Image src={i.imageUrl} width={340} height={345} alt='' />
+              <p className='mt-5'>{i.shortTitle}</p>
             </Card>
           </Link>
         ))}
