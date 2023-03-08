@@ -1,6 +1,5 @@
 ---
 title: 'Подари счастливую жизнь'
-shortTitle: 'Подари счастливую жизнь'
 imageUrl: '/images/program-1.png'
 ---
 
