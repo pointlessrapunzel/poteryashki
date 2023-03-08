@@ -4,27 +4,34 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import Image from 'next/image'
 import React from 'react'
 import QRImage from '@/../public/images/donate-qr.png'
+import Head from 'next/head'
 
 export default function Donate() {
   return (
-    <main className='grid grid-cols-main items-center justify-center gap-y-24 bg-brand-200 py-24'>
-      <h1 className='col-contain text-center text-6xl'>Пожертвовать</h1>
-      <Card padding='px-9 py-20' className='col-span-5 col-start-2'>
-        <DonateForm />
-      </Card>
-      <div className='col-span-3 col-start-8 justify-self-center'>
-        <Card
-          padding='p-0'
-          className='relative h-[350px] w-[350px] bg-gray-400'
-        >
-          <Image src={QRImage} alt='' fill />
+    <>
+      <Head>
+        <title>{`Пожертвовать | Потеряшки`}</title>
+        <meta name='description' content='' />
+      </Head>
+      <main className='grid grid-cols-main items-center justify-center gap-y-24 bg-brand-200 py-24'>
+        <h1 className='col-contain text-center text-6xl'>Пожертвовать</h1>
+        <Card padding='px-9 py-20' className='col-span-5 col-start-2'>
+          <DonateForm />
         </Card>
-        <h2 className='mt-20 text-center text-3xl'>Оплата по QR</h2>
-      </div>
-      <strong className='col-contain text-center text-5xl font-medium'>
-        Спасибо вам!
-      </strong>
-    </main>
+        <div className='col-span-3 col-start-8 justify-self-center'>
+          <Card
+            padding='p-0'
+            className='relative h-[350px] w-[350px] bg-gray-400'
+          >
+            <Image src={QRImage} alt='' fill />
+          </Card>
+          <h2 className='mt-20 text-center text-3xl'>Оплата по QR</h2>
+        </div>
+        <strong className='col-contain text-center text-5xl font-medium'>
+          Спасибо вам!
+        </strong>
+      </main>
+    </>
   )
 }
 

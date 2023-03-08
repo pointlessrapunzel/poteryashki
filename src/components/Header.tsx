@@ -23,13 +23,13 @@ const navItems = [
     label: 'Как помочь',
     url: '/#help',
     links: [
-      { label: 'Пожертвовать', url: '/donate' },
-      { label: 'Взять на передержку', url: '/#' },
-      { label: 'Помочь транспортом', url: '/#' },
-      { label: 'Пополнить баланс ГЛ', url: '/#' },
-      { label: 'Передать вещи', url: '/#' },
-      { label: 'Стать партнером', url: '/#' },
-      { label: 'Стать волонтером', url: '/#' },
+      { label: 'Пожертвовать', url: '/help/donate' },
+      { label: 'Взять на передержку', url: '/help/temp-foster' },
+      { label: 'Помочь транспортом', url: '/help/transport' },
+      { label: 'Пополнить баланс ГЛ', url: '/help/hotline' },
+      { label: 'Передать вещи', url: '/help/things' },
+      { label: 'Стать партнером', url: '/help/partner' },
+      { label: 'Стать волонтером', url: '/help/volunteer' },
     ],
   },
   { label: 'Новости', url: '/news' },
@@ -97,7 +97,7 @@ export default function Header() {
         >
           +7 (904) 494-55-66
         </a>
-        <ButtonAsLink href='/donate' className='inline h-full'>
+        <ButtonAsLink href='/help/donate' className='inline h-full'>
           Пожертвовать
         </ButtonAsLink>
       </div>

@@ -12,20 +12,24 @@ input[type='number'] {
   appearance: textfield;
 }
 
-.text-stroke {
-  --stoke-color: black;
-  text-shadow: 1px 1px 0 var(--stoke-color), -1px -1px 0 var(--stoke-color),
-    1px -1px 0 var(--stoke-color), -1px 1px 0 var(--stoke-color),
-    1px 1px 0 var(--stoke-color);
+@layer utilities {
+  .text-stroke {
+    --stoke-color: black;
+    text-shadow: 1px 1px 0 var(--stoke-color), -1px -1px 0 var(--stoke-color),
+      1px -1px 0 var(--stoke-color), -1px 1px 0 var(--stoke-color),
+      1px 1px 0 var(--stoke-color);
+  }
 }
 
-.md-content li {
-  padding-left: 1em;
-}
-.md-content li::before {
-  content: '- ';
-}
+@layer components {
+  .md-content li {
+    padding-left: 1em;
+  }
+  .md-content li::before {
+    content: '- ';
+  }
 
-.md-content a {
-  text-decoration: underline;
+  .md-content a {
+    text-decoration: underline;
+  }
 }

@@ -9,22 +9,22 @@ import aboutCat from '@/../public/images/about-cat.png'
 import videoPlaceholder from '@/../public/images/video-placeholder.png'
 import ContactForm from '@/components/ContactForm'
 import { getAllProgramsData } from '@/lib/getProgramsData'
+import { getAllHelpData, HelpData } from '@/lib/getHelpData'
+import HelpSection from '@/components/HelpSection'
 
 type ProgramsData = ReturnType<typeof getAllProgramsData>
 
 type Props = {
   programsData: ProgramsData
+  helpData: HelpData[]
 }
 
-export default function Home({ programsData }: Props) {
-  console.log(programsData)
+export default function Home({ programsData, helpData }: Props) {
   return (
     <>
       <Head>
         <title>Потеряшки</title>
         <meta name='description' content='' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeroSection />
@@ -34,7 +34,7 @@ export default function Home({ programsData }: Props) {
         <Mission />
         <Stats />
         <Team />
-        <Help />
+        <HelpSection helpData={helpData} />
         <Programs programs={programsData} />
         <News />
         <Partners />
@@ -46,9 +46,11 @@ export default function Home({ programsData }: Props) {
 
 export async function getStaticProps() {
   const programsData = getAllProgramsData()
+  const helpData = getAllHelpData()
   return {
     props: {
       programsData,
+      helpData,
     },
   }
 }
@@ -293,75 +295,11 @@ function Team() {
   )
 }
 
-function Help() {
-  const items = [
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-    {
-      icon: '/icons/icon-donation.png',
-      text: 'Сделать пожертвование',
-      url: 'donate',
-    },
-  ]
-
-  return (
-    <section
-      id='help'
-      className='grid grid-cols-main gap-y-24 bg-brand-200 py-24'
-    >
-      <h2 className='col-contain text-center text-6xl'>Как нам помочь</h2>
-      <div className='col-contain grid grid-cols-4 place-content-center place-items-center gap-x-32 gap-y-24'>
-        {items.map((el) => (
-          <Link key={el.url} href={el.url}>
-            <Card className='flex h-[312px] w-[302px] flex-col items-center justify-center gap-8 text-center text-2xl font-extrabold uppercase'>
-              <Image src={el.icon} width={122} height={122} alt='' />
-              <p>{el.text}</p>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 function Programs(props: { programs: ProgramsData }) {
   const items = props.programs
 
   return (
-    <section className='grid grid-cols-main gap-y-20 py-24'>
+    <section id='programs' className='grid grid-cols-main gap-y-20 py-24'>
       <h2 className='col-contain text-center text-6xl'>Наши программы</h2>
       <div className='col-contain flex justify-around gap-20'>
         {items.map((i) => (

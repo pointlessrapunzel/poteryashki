@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Footer from '@/components/Footer'
+import Head from 'next/head'
 
 const onestFont = localFont({
   src: [
@@ -41,15 +42,20 @@ const onestFont = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`bg-neutral-100 font-sans font-medium`}>
-      <style jsx global>{`
-        :root {
-          --font-onest: ${onestFont.style.fontFamily};
-        }
-      `}</style>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+      <div className={`bg-neutral-100 font-sans font-medium`}>
+        <style jsx global>{`
+          :root {
+            --font-onest: ${onestFont.style.fontFamily};
+          }
+        `}</style>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
+    </>
   )
 }
