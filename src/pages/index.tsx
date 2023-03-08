@@ -7,6 +7,7 @@ import Link from 'next/link'
 import heroDog from '@/../public/images/hero-dog.png'
 import aboutCat from '@/../public/images/about-cat.png'
 import videoPlaceholder from '@/../public/images/video-placeholder.png'
+import ContactForm from '@/components/ContactForm'
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
         <Programs />
         <News />
         <Partners />
-        <ContactUs />
+        <ContactForm />
       </main>
     </>
   )
@@ -459,63 +460,6 @@ function Partners() {
       >
         Стать партнером
       </ButtonAsLink>
-    </section>
-  )
-}
-
-function ContactUs() {
-  return (
-    <section className='grid grid-cols-main gap-y-20 bg-brand-200 py-24'>
-      <div className='col-contain'>
-        <h2 className='text-center text-6xl'>Напишите нам</h2>
-        <form className='mt-16 flex w-full justify-between gap-20 text-4xl'>
-          <div className='flex basis-1/3 flex-col items-center gap-7'>
-            <div>
-              <label htmlFor='contact-name'>Имя</label>
-              <Card
-                padding='p-0'
-                className='mt-3 focus-within:border-brand-600'
-              >
-                <input
-                  className='block w-full bg-neutral-100 p-6 text-2xl  focus-visible:outline-none'
-                  type='text'
-                  name='name'
-                  id='contact-name'
-                />
-              </Card>
-            </div>
-            <div>
-              <label htmlFor='contact-details'>Email или телефон</label>
-              <Card
-                padding='p-0'
-                className='mt-3 focus-within:border-brand-600'
-              >
-                <input
-                  className='block w-full bg-neutral-100 p-6 text-2xl focus-visible:border-brand-400 focus-visible:outline-none'
-                  type='text'
-                  name='details'
-                  id='contact-details'
-                />
-              </Card>
-            </div>
-            <Button className='mt-auto text-4xl' type='submit'>
-              Отправить
-            </Button>
-          </div>
-          <div className='basis-2/3'>
-            <label htmlFor='contact-message'>Сообщение</label>
-            <Card padding='p-0' className='mt-3 focus-within:border-brand-600'>
-              <textarea
-                className='w-full border-dashed bg-neutral-100 p-6 text-2xl focus-visible:border-brand-400 focus-visible:outline-none'
-                name='message'
-                id='contact-message'
-                cols={30}
-                rows={10}
-              ></textarea>
-            </Card>
-          </div>
-        </form>
-      </div>
     </section>
   )
 }
