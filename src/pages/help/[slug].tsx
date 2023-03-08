@@ -56,7 +56,7 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllHelpSlugs()
+  const paths = getAllHelpSlugs().filter((p) => p.params.slug !== 'donate')
   return {
     paths,
     fallback: false,
