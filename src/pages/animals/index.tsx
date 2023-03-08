@@ -81,7 +81,7 @@ function Filter() {
                   />
                   <label
                     htmlFor={`filter-${o}`}
-                    className='cursor-pointer select-none rounded border border-black bg-white px-6 py-0.5 font-light outline-offset-2 focus-within:outline-dashed peer-checked:bg-brand-300'
+                    className='cursor-pointer select-none rounded border border-black bg-white px-6 py-0.5 font-light outline-offset-2 peer-checked:bg-brand-300 peer-focus:outline peer-focus:outline-2 peer-focus:outline-offset-0 peer-focus:outline-highlight'
                   >
                     {o}
                   </label>
