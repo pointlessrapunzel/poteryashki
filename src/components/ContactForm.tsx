@@ -6,7 +6,7 @@ export default function ContactForm() {
     <section className='grid grid-cols-main gap-y-20 bg-brand-200 py-24'>
       <div className='col-contain'>
         <h2 className='text-center text-6xl'>Напишите нам</h2>
-        <form className='mt-16 flex w-full justify-between gap-20 text-3xl'>
+        <form className='mt-16 flex w-full justify-between gap-12 text-3xl'>
           <div className='flex basis-1/3 flex-col items-center gap-7'>
             <TextInput label='Имя' name='contact-name' />
             <TextInput label='Email или телефон' name='contact-details' />
