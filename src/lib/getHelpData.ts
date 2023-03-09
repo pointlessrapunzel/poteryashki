@@ -6,10 +6,17 @@ export type HelpData = {
   shortTitle: string
   linkImage: string
   contentHtml: string
+  order: number
 }
 
-export const {
-  getAllMdMetadata: getAllHelpData,
+const {
+  getAllMdMetadata,
   getMdData: getHelpData,
   getAllMdSlugs: getAllHelpSlugs,
 } = getMarkdownFrom<HelpData>('/src/data/help')
+
+function getAllHelpData() {
+  return getAllMdMetadata().sort((a, b) => a.order - b.order)
+}
+
+export { getAllHelpData, getHelpData, getAllHelpSlugs }

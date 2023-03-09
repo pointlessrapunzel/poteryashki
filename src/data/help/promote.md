@@ -1,6 +1,7 @@
 ---
 title: 'Участвовать в акциях'
 linkImage: '/icons/icon-megaphone.png'
+order: 7
 ---
 
 Вся информация об акциях есть в нашей группе в вк.

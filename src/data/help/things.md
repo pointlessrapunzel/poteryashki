@@ -2,6 +2,7 @@
 title: 'Эти вещи нужны нам всегда'
 shortTitle: 'Передать вещи для животных'
 linkImage: '/icons/icon-dog.png'
+order: 5
 ---
 
 ## Аптечка
