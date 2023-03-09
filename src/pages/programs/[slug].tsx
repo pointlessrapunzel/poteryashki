@@ -31,15 +31,13 @@ export default function Program({ programData }: Props) {
           <ContactForm />
         </div>
         <div className='col-span-4 col-start-8 flex flex-col gap-16'>
-          {[
-            '/images/animals/cats/Igla.jpg',
-            '/images/animals/cats/Kaskad.jpg',
-            '/images/animals/cats/Olive.jpg',
-          ].map((i) => (
-            <Card key={i}>
-              <Image width={627} height={481} src={i} alt='' />
-            </Card>
-          ))}
+          {programData?.images
+            ? programData.images.map((i) => (
+                <Card key={i}>
+                  <Image width={627} height={481} src={i} alt='' />
+                </Card>
+              ))
+            : null}
         </div>
       </main>
     </>

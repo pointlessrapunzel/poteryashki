@@ -2,6 +2,11 @@
 title: 'Горячая линия для помощи животным'
 shortTitle: 'Горячая линия'
 imageUrl: '/images/program-3.png'
+images:
+  - '/images/animals/cats/Igla.jpg'
+  - '/images/animals/cats/Proctor.jpg'
+  - '/images/animals/cats/Proctor.jpg'
+  - '/images/animals/cats/Proctor.jpg'
 ---
 
 Горячая линия - способ найти потерявшееся животное на улицах Тюмени, оказать помощь животному, попавшему в тяжёлую ситуацию.

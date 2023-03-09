@@ -6,6 +6,7 @@ type ProgramData = {
   shortTitle: string
   imageUrl: string
   contentHtml: string
+  images?: string[]
 }
 
 export const {

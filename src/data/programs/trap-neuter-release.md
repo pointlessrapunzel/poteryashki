@@ -2,6 +2,9 @@
 title: 'Отлов, стерилизация и возврат'
 shortTitle: 'Отлов-стерилизация-возврат'
 imageUrl: '/images/program-2.png'
+images:
+  - '/images/animals/cats/Igla.jpg'
+  - '/images/animals/cats/Proctor.jpg'
 ---
 
 Доказано, что метод регулирования численности бездомных животных с помощью отстрелов неэффективен и дорогостоящ.
