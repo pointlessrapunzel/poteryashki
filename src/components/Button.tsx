@@ -19,7 +19,7 @@ type ButtonProps = BaseProps &
 type ButtonLinkProps = BaseProps & LinkProps
 
 function cls(variant: keyof typeof variants, className = '') {
-  return `inline-flex items-center rounded py-6 px-10 text-2xl font-medium leading-tight focus-visible:outline-none focus-visible:bg-brand-800 ${variants[variant]} ${className}`
+  return `flex w-max items-center rounded py-6 px-10 text-2xl font-medium leading-tight focus-visible:bg-brand-800 focus-visible:outline-none ${variants[variant]} ${className}`
 }
 
 export function Button({

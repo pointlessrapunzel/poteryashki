@@ -19,6 +19,17 @@ type Props = {
 }
 
 export default function HelpPage({ helpData, helpDataLinks }: Props) {
+  const callToAction = () => {
+    if (helpData.slug == 'temp-foster') return <TempFosterCTA />
+    else if (helpData.slug == 'promote')
+      return (
+        <ButtonAsLink className='mx-auto mt-24 block' href='#vk'>
+          Перейти в группу ВК
+        </ButtonAsLink>
+      )
+    else return <ContactForm />
+  }
+
   return (
     <>
       <Head>
@@ -36,7 +47,7 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
             className='md-content mt-16 space-y-10 text-3xl'
             dangerouslySetInnerHTML={{ __html: helpData.contentHtml }}
           />
-          {helpData.slug == 'temp-foster' ? <TempFosterCTA /> : <ContactForm />}
+          {callToAction()}
         </div>
         <div className='col-span-4 col-start-8 flex flex-col gap-16'>
           {helpData?.images
