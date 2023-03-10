@@ -17,7 +17,7 @@ export default function ContactForm() {
           <div className='flex basis-2/3 flex-col'>
             <label htmlFor='contact-message'>Сообщение</label>
             <textarea
-              className='mt-3 block h-full w-full rounded border-2 border-dashed border-black  bg-neutral-100 p-2 leading-none outline-none focus-visible:border-highlight lg:p-6'
+              className='dashed-border mt-3 block h-full w-full rounded  bg-neutral-100 p-2 leading-none outline-none lg:p-6'
               name='message'
               id='contact-message'
               cols={30}
