@@ -52,7 +52,7 @@ function NavItem({ item }: { item: NavItem }) {
   const { label, links, url } = item
 
   return (
-    <NavigationMenu.Item className='relative w-max transition-colors duration-100 hover:text-brand-400'>
+    <NavigationMenu.Item className='relative z-10 w-max transition-colors duration-100 hover:text-brand-400'>
       {!links ? (
         <NavLink href={url}>{label}</NavLink>
       ) : (
