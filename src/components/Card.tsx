@@ -12,9 +12,7 @@ export default function Card({
   className = '',
 }: Props) {
   return (
-    <div
-      className={`${bgColor} rounded border-2 border-dashed border-black ${padding} ${className}`}
-    >
+    <div className={`${bgColor} dashed-border rounded ${padding} ${className}`}>
       {children}
     </div>
   )
