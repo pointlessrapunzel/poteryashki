@@ -38,17 +38,16 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
           <ContactForm />
         </div>
         <div className='col-span-4 col-start-8 flex flex-col gap-16'>
-          {[
-            '/images/animals/cats/Igla.jpg',
-            '/images/animals/cats/Kaskad.jpg',
-          ].map((i) => (
-            <Card key={i}>
-              <Image width={627} height={481} src={i} alt='' />
-            </Card>
-          ))}
+          {helpData?.images
+            ? helpData.images.map((i) => (
+                <Card key={i.src}>
+                  <Image width={627} height={481} src={i.src} alt='' />
+                </Card>
+              ))
+            : null}
         </div>
         <div className='col-contain'>
-          <HelpSection helpData={helpDataLinks} />
+          <HelpSection heading='Как нам ещё помочь' helpData={helpDataLinks} />
         </div>
       </main>
     </>
@@ -56,7 +55,10 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllHelpSlugs().filter((p) => p.params.slug !== 'donate')
+  const paths = getAllHelpSlugs().filter(
+    // filter out non generated layouts
+    (p) => !['donate', 'donate-supplies'].includes(p.params.slug)
+  )
   return {
     paths,
     fallback: false,

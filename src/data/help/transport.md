@@ -2,6 +2,10 @@
 title: 'Помочь транспортом'
 linkImage: '/icons/icon-car.png'
 order: 3
+images:
+  - src: '/images/animals/cats/Igla.jpg'
+  - src: '/images/animals/cats/Proctor.jpg'
+  - src: '/images/animals/cats/Olive.jpg'
 ---
 
 Фонд нуждается в автоволонтерах! Ведь автоволонтеры это те,

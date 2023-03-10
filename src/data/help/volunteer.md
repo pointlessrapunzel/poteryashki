@@ -2,6 +2,9 @@
 title: 'Стать волонтером'
 linkImage: '/icons/icon-fist.png'
 order: 8
+images:
+  - src: '/images/animals/cats/Igla.jpg'
+  - src: '/images/animals/cats/Proctor.jpg'
 ---
 
 Вы всегда рады любой помощи, а если вы готовы сотрудничать с нами, вы можете стать волонтёром!

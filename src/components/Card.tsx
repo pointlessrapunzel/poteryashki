@@ -13,7 +13,7 @@ export default function Card({
 }: Props) {
   return (
     <div
-      className={`${bgColor} rounded border-2 border-dashed border-black ${padding} ${className}`}
+      className={`${bgColor} flex flex-col items-center gap-4 rounded border-2 border-dashed border-black ${padding} ${className}`}
     >
       {children}
     </div>

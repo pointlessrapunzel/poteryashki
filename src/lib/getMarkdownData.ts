@@ -3,8 +3,6 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 
-const programsDir = path.join(process.cwd(), '/src/data/programs')
-
 type MdData = {
   slug: string
   contentHtml?: string

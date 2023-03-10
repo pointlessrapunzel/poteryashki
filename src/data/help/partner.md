@@ -3,6 +3,11 @@ title: 'Стать корпоративным партнером'
 shortTitle: 'Стать партнером'
 linkImage: '/icons/icon-partner.png'
 order: 6
+images:
+  - src: '/images/animals/cats/Igla.jpg'
+  - src: '/images/animals/cats/Proctor.jpg'
+  - src: '/images/animals/cats/Olive.jpg'
+  - src: '/images/animals/cats/Licerg.jpg'
 ---
 
 Фонд разделяет ценности бизнес-сообщества, ведь гуманное отношение к животным, а это безопасность и комфорт жителей нашего города – наши приоритеты.

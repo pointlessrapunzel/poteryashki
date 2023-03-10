@@ -27,7 +27,7 @@ const navItems = [
       { label: 'Взять на передержку', url: '/help/temp-foster' },
       { label: 'Помочь транспортом', url: '/help/transport' },
       { label: 'Пополнить баланс ГЛ', url: '/help/hotline' },
-      { label: 'Передать вещи', url: '/help/things' },
+      { label: 'Передать вещи', url: '/help/donate-supplies' },
       { label: 'Стать партнером', url: '/help/partner' },
       { label: 'Стать волонтером', url: '/help/volunteer' },
     ],

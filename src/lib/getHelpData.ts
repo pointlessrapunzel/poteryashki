@@ -7,6 +7,7 @@ export type HelpData = {
   linkImage: string
   contentHtml: string
   order: number
+  images?: { src: string; label: string }[]
 }
 
 const {

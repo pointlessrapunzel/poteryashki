@@ -46,7 +46,7 @@ export default function Home({ programsData, helpData }: Props) {
 
 export async function getStaticProps() {
   const programsData = getAllProgramsData()
-  const helpData = getAllHelpData()
+  const helpData = await getAllHelpData()
   return {
     props: {
       programsData,

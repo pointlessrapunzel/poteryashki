@@ -2,6 +2,10 @@
 title: 'Взять на передержку'
 linkImage: '/icons/icon-dog-box.png'
 order: 2
+images:
+  - src: '/images/animals/cats/Igla.jpg'
+  - src: '/images/animals/cats/Proctor.jpg'
+  - src: '/images/animals/cats/Olive.jpg'
 ---
 
 Все подопечные Фонда живут на передержках у волонтеров! Вы тоже можете помочь животным дождаться хозяина!
