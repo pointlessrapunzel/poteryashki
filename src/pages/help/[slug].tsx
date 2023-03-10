@@ -1,3 +1,4 @@
+import { ButtonAsLink } from '@/components/Button'
 import Card from '@/components/Card'
 import ContactForm from '@/components/ContactForm'
 import HelpSection from '@/components/HelpSection'
@@ -35,7 +36,7 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
             className='md-content mt-16 space-y-10 text-3xl'
             dangerouslySetInnerHTML={{ __html: helpData.contentHtml }}
           />
-          <ContactForm />
+          {helpData.slug == 'temp-foster' ? <TempFosterCTA /> : <ContactForm />}
         </div>
         <div className='col-span-4 col-start-8 flex flex-col gap-16'>
           {helpData?.images
@@ -51,6 +52,15 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
         </div>
       </main>
     </>
+  )
+}
+
+function TempFosterCTA() {
+  return (
+    <div className='mt-20 flex flex-col items-center gap-14'>
+      <ButtonAsLink href='/animals?cats'>Взять кошку</ButtonAsLink>
+      <ButtonAsLink href='/animals?dogs'>Взять собаку</ButtonAsLink>
+    </div>
   )
 }
 
