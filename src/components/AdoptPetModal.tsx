@@ -18,10 +18,16 @@ export default function AdoptPetModal() {
             Оставьте заявку, мы свяжемся с вами и расскажем, как приручить эту
             милаху!
           </Dialog.Description>
-          <TextInput label='Имя' name='name' className='mt-8' />
+          <TextInput
+            label='Имя'
+            name='name'
+            className='mt-8'
+            inputBg='bg-brand-100'
+          />
           <TextInput
             label='Email или телефон'
             name='contact-details'
+            inputBg='bg-brand-100'
             className='mt-8'
           />
           <Dialog.Close asChild>
@@ -31,7 +37,7 @@ export default function AdoptPetModal() {
           </Dialog.Close>
           <Dialog.Close asChild>
             <button
-              className='focus:shadow-violet7 absolute top-2 right-2 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 hover:bg-brand-600/50 focus:shadow-[0_0_0_2px] focus:shadow-brand-600 focus:outline-none lg:top-8 lg:right-8 lg:h-16 lg:w-16'
+              className='focus:shadow-violet7 absolute top-2 right-2 inline-flex h-10 w-10 appearance-none items-center justify-center rounded-full p-2 hover:bg-brand-400/30 focus:shadow-[0_0_0_2px] focus:shadow-brand-600 focus:outline-none lg:top-8 lg:right-8 lg:h-16 lg:w-16'
               aria-label='Закрыть'
             >
               <svg
