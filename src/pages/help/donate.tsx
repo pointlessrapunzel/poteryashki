@@ -36,7 +36,7 @@ export default function Donate() {
 }
 
 const toggleItemCls =
-  'basis-full rounded border-2 border-dashed border-black bg-brand-100 data-[state=on]:bg-brand-200'
+  'basis-full rounded dashed-border bg-brand-100 data-[state=on]:bg-brand-200'
 const toggleItemClsBig = toggleItemCls + ' p-6'
 const toggleItemClsSmall = toggleItemCls + ' p-2'
 
@@ -119,7 +119,7 @@ function DonateForm() {
           </ToggleGroup.Item>
         </ToggleGroup.Root>
       </div>
-      <div className='flex w-2/5 items-center rounded border-2 border-dashed border-black bg-brand-100 p-4 text-4xl'>
+      <div className='dashed-border flex w-2/5 items-center rounded bg-brand-100 p-4 text-4xl'>
         <input
           className='w-full grow bg-inherit pr-2 text-4xl text-highlight outline-none'
           type='number'
