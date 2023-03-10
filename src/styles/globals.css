@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+
 /* remove arrows from the number input */
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;

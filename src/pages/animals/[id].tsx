@@ -1,3 +1,4 @@
+import React from 'react'
 import { ButtonAsLink } from '@/components/Button'
 import Card from '@/components/Card'
 import Head from 'next/head'
@@ -8,6 +9,7 @@ import iconForward from '@/../public/icons/icon-arrow-forward.svg'
 import iconBack from '@/../public/icons/icon-arrow-back.svg'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import AdoptPetModal from '@/components/AdoptPetModal'
+import ImageCarousel from '@/components/Carousel'
 
 const animal = {
   name: 'Каскад',
@@ -24,7 +26,12 @@ const animal = {
     'Обработан от паразитов': true,
     Чипирован: true,
   },
-  image: '/images/animals/cats/Kaskad.jpg',
+  photos: [
+    '/images/animals/cats/Kaskad.jpg',
+    '/images/animals/cats/Kaskad.jpg',
+    '/images/animals/cats/Kaskad.jpg',
+    '/images/animals/cats/Kaskad.jpg',
+  ],
   description:
     'Каскад - это весёлый, игривый подросток, с которым точно не соскучишься, а ещё он любит людей и ласку. Спать предпочитает с человеком, но так, что бы не потревожить его сон. Совершенно не любит оставаться один, поэтому предпочитает всегда находится где-то рядом.',
 }
@@ -45,31 +52,17 @@ function AnimalCard({
 
   return (
     <Card padding='p-10' className={`flex flex-col items-center ${className}`}>
-      <Image height={696} width={930} src={animal.image} alt={animal.name} />
-      <div className='mt-5 flex gap-5'>
-        <svg
-          width='13'
-          height='13'
-          viewBox='0 0 13 13'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <circle cx='6.5' cy='6.5' r='6' fill='black' stroke='black' />
-        </svg>
-        <svg
-          width='12'
-          height='13'
-          viewBox='0 0 12 13'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            d='M11.5 6.5C11.5 9.85214 9.00064 12.5 6 12.5C2.99936 12.5 0.5 9.85214 0.5 6.5C0.5 3.14786 2.99936 0.5 6 0.5C9.00064 0.5 11.5 3.14786 11.5 6.5Z'
-            fill='white'
-            stroke='black'
+      <ImageCarousel>
+        {animal.photos.map((ph, idx) => (
+          <Image
+            key={`${ph}-${idx}`}
+            width={930}
+            height={696}
+            src={ph}
+            alt=''
           />
-        </svg>
-      </div>
+        ))}
+      </ImageCarousel>
       <strong className='mt-4 text-4xl font-medium'>{animal.name}</strong>
       <p className='text-4xl font-light'>
         {gender}, {age}
@@ -104,27 +97,7 @@ export default function Animal() {
           <ul className='flex flex-col gap-4 text-2xl font-light'>
             {Object.entries(animal.moreTraits).map(([k, v]) => (
               <li className='flex items-center gap-5' key={k}>
-                <svg
-                  width='35'
-                  height='32'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <rect
-                    x='1'
-                    y='1'
-                    width='30'
-                    height='30'
-                    rx='4'
-                    fill='#F1F1F1'
-                    stroke='#000'
-                    strokeWidth='2'
-                  />
-                  <path
-                    d='M16.141 25 6 13.624l2.535-2.844 7.606 8.532L32.465 1 35 3.844 16.141 25Z'
-                    fill='#1C1B1F'
-                  />
-                </svg>
+                <CheckboxIcon />
                 {k}
               </li>
             ))}
@@ -225,5 +198,26 @@ export default function Animal() {
         </div>
       </main>
     </>
+  )
+}
+
+function CheckboxIcon() {
+  return (
+    <svg width='35' height='32' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <rect
+        x='1'
+        y='1'
+        width='30'
+        height='30'
+        rx='4'
+        fill='#F1F1F1'
+        stroke='#000'
+        strokeWidth='2'
+      />
+      <path
+        d='M16.141 25 6 13.624l2.535-2.844 7.606 8.532L32.465 1 35 3.844 16.141 25Z'
+        fill='#1C1B1F'
+      />
+    </svg>
   )
 }
