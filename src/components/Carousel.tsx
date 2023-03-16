@@ -11,7 +11,6 @@ export default function ImageCarousel({ children }: Props) {
 
   const scrollRoot = React.useRef<HTMLDivElement>(null)
   const io = React.useRef<IntersectionObserver | null>(null)
-  const nodes = React.useRef(new Array())
 
   let ioCallback = (nodes: IntersectionObserverEntry[]) => {
     nodes.forEach((n) => {
@@ -28,7 +27,7 @@ export default function ImageCarousel({ children }: Props) {
       threshold: 0.5,
     })
 
-    for (let node of nodes.current) {
+    for (let node of Array.from(scrollRoot.current.children)) {
       io.current.observe(node)
     }
 
@@ -43,9 +42,8 @@ export default function ImageCarousel({ children }: Props) {
       >
         {React.Children.map(children, (ch, idx) => (
           <div
-            ref={(el) => (nodes.current[idx] = el)}
             data-carousel-idx={idx}
-            className='relative flex w-full flex-none snap-start snap-always'
+            className='relative flex w-full flex-none snap-center snap-always'
           >
             {ch}
           </div>
@@ -55,25 +53,39 @@ export default function ImageCarousel({ children }: Props) {
         className='absolute left-0 top-1/2 -translate-y-1/2 rotate-180 disabled:opacity-70'
         disabled={current == 0}
         onClick={() => {
-          nodes.current[current - 1].scrollIntoView({ block: 'center' })
+          scrollRoot.current?.scrollBy({
+            left: -scrollRoot.current.clientWidth,
+          })
         }}
       >
-        <Image width={52} height={52} src={iconCarouselArrow} alt='Назад' />
+        <Image
+          width={52}
+          height={52}
+          src={iconCarouselArrow}
+          alt='Предыдущее фото'
+        />
       </button>
       <button
         className='absolute right-0 top-1/2 -translate-y-1/2 disabled:opacity-70'
         disabled={current == children.length - 1}
         onClick={() => {
-          nodes.current[current + 1].scrollIntoView({ block: 'center' })
+          scrollRoot.current?.scrollBy({
+            left: scrollRoot.current.clientWidth,
+          })
         }}
       >
-        <Image width={52} height={52} src={iconCarouselArrow} alt='Назад' />
+        <Image
+          width={52}
+          height={52}
+          src={iconCarouselArrow}
+          alt='Следующее фото'
+        />
       </button>
       <div className='mt-5 flex justify-center gap-5'>
-        {React.Children.map(children, (ch, idx) => (
+        {React.Children.map(children, (_, idx) => (
           <CarouselIndicatorButton
             current={current == idx}
-            scrollRef={nodes.current[idx]}
+            scrollElement={scrollRoot.current?.children[idx] as HTMLDivElement}
           />
         ))}
       </div>
@@ -83,20 +95,19 @@ export default function ImageCarousel({ children }: Props) {
 
 type CarouselIndicatorButtonProps = {
   current?: Boolean
-  scrollRef: HTMLElement
+  scrollElement?: HTMLDivElement
 }
 
 function CarouselIndicatorButton({
   current = false,
-  scrollRef,
+  scrollElement,
 }: CarouselIndicatorButtonProps) {
   return (
     <button
-      onClick={() =>
-        scrollRef.scrollIntoView({
-          block: 'center',
-        })
-      }
+      onClick={() => {
+        if (!scrollElement) return
+        scrollElement.scrollIntoView({ block: 'nearest' })
+      }}
     >
       <svg
         width='13'
