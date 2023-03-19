@@ -29,9 +29,6 @@ module.exports = {
       fontSize: {
         '4.5xl': ['2.5rem', '1.2'],
       },
-      gridTemplateColumns: {
-        main: 'minmax(2rem, 1fr) repeat(10, minmax(0, 9rem)) minmax(2rem, 1fr)',
-      },
       gridColumn: {
         contain: '2 / -2',
       },

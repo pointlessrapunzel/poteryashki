@@ -26,6 +26,19 @@ input[type='number'] {
       1px -1px 0 var(--stoke-color), -1px 1px 0 var(--stoke-color),
       1px 1px 0 var(--stoke-color);
   }
+
+  .grid-cols-main {
+    --min-gutter: 2rem;
+    --col-gutter: minmax(var(--min-gutter), 1fr);
+
+    /* 160px per column for 10 columns = 1600px container */
+    --max-col-width: 10rem;
+    --col-center: repeat(10, minmax(0, var(--max-col-width)));
+    --grid-cols: var(--col-gutter) var(--col-center) var(--col-gutter);
+
+    grid-template-columns: var(--grid-cols);
+  }
+
   .dashed-border {
     border-width: 2px;
     border-image-source: url("data:image/svg+xml,%3Csvg width='162' height='162' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23a)' stroke='%23000' stroke-width='2'%3E%3Cpath d='M21 161H6c-3 0-5-2-5-5v-15M141 1h15c3 0 5 2 5 5v15M1 21V6c0-3 2-5 5-5h15m140 140v15c0 3-2 5-5 5h-15M1 61v40m160-40v40M61 1h40M61 161h40'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Crect width='162' height='162' rx='5' fill='%23fff'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
@@ -38,6 +51,51 @@ input[type='number'] {
 }
 
 @layer components {
+  .grid-hero {
+    @apply grid-cols-main grid pt-5;
+
+    --bottom-overlap-row: 2rem;
+    grid-template-rows: 0 auto 4rem var(--bottom-overlap-row);
+    margin-bottom: calc(-1 * var(--bottom-overlap-row));
+
+    @screen lg {
+      --bottom-overlap-row: 190px;
+      grid-template-rows: 121px auto 150px var(--bottom-overlap-row);
+    }
+  }
+
+  .grid-hero > div:first-child {
+    @apply z-10 col-contain row-start-2 flex flex-col gap-y-16;
+    max-width: 40ch;
+
+    @screen lg {
+      @apply col-start-2 col-end-8 gap-y-20;
+      max-width: initial;
+    }
+
+    @screen xl {
+      @apply col-end-6;
+    }
+  }
+
+  .grid-hero__image {
+    --scale: 1.3;
+    @apply col-start-7 col-end-13 row-start-1 row-end-5 self-center;
+    transform: translate3d(7rem, 0.5rem, 0) scale(var(--scale)) rotate(0.9turn);
+
+    @screen sm {
+      --scale: 1;
+    }
+
+    @screen lg {
+      transform: initial;
+    }
+
+    @screen xl {
+      @apply col-end-12;
+    }
+  }
+
   .md-content li {
     padding-left: 1em;
   }
