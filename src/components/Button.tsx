@@ -8,6 +8,7 @@ const variants = {
 
 type BaseProps = {
   className?: string
+  fontSize?: string
   variant?: keyof typeof variants
   children: React.ReactNode
 }
@@ -18,12 +19,17 @@ type ButtonProps = BaseProps &
 
 type ButtonLinkProps = BaseProps & LinkProps
 
-function cls(variant: keyof typeof variants, className = '') {
-  return `flex w-max items-center rounded py-6 px-10 text-2xl font-medium leading-tight focus-visible:bg-brand-800 focus-visible:outline-none ${variants[variant]} ${className}`
+function cls(
+  variant: keyof typeof variants,
+  fontSize = 'text-4xl',
+  className = ''
+) {
+  return `flex w-max items-center rounded py-4 px-10 font-medium leading-tight focus-visible:bg-brand-800 focus-visible:outline-none ${fontSize} ${variants[variant]} ${className}`
 }
 
 export function Button({
   className = '',
+  fontSize,
   children,
   variant = 'default',
   ...props
@@ -31,7 +37,7 @@ export function Button({
   const El = props.href ? 'a' : 'button'
 
   return (
-    <El className={cls(variant, className)} {...props}>
+    <El className={cls(variant, fontSize, className)} {...props}>
       {children}
     </El>
   )
@@ -39,12 +45,13 @@ export function Button({
 
 export function ButtonAsLink({
   className = '',
+  fontSize,
   children,
   variant = 'default',
   ...props
 }: ButtonLinkProps) {
   return (
-    <Link className={cls(variant, className)} {...props}>
+    <Link className={cls(variant, fontSize, className)} {...props}>
       {children}
     </Link>
   )
