@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ButtonAsLink } from './Button'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import Image from 'next/image'
+import Logo from './Logo'
 
 type Props = {
   children: React.ReactNode
@@ -52,7 +52,7 @@ function NavItem({ item }: { item: NavItem }) {
   const { label, links, url } = item
 
   return (
-    <NavigationMenu.Item className='relative z-10 w-max transition-colors duration-100 hover:text-brand-400'>
+    <NavigationMenu.Item className='relative z-20 w-max transition-colors duration-100 hover:text-brand-400'>
       {!links ? (
         <NavLink href={url}>{label}</NavLink>
       ) : (
@@ -77,11 +77,11 @@ function NavItem({ item }: { item: NavItem }) {
 
 export default function Header() {
   return (
-    <header className='grid h-24 grid-cols-main text-xl 2xl:text-2xl'>
-      <div className='col-contain flex items-center justify-between gap-9'>
-        <div className='min-w-min shrink-0'>
+    <header className='grid-cols-main z-20 grid bg-neutral-100 py-6 text-xs sm:text-lg lg:h-16 xl:h-[93px] xl:py-0 xl:text-xl 2xl:text-[27px]'>
+      <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-9'>
+        <div className='shrink-1 mb-[6px] min-w-[200px]'>
           <Link href={'/'}>
-            <Image width='291' height='31' src='/logo.svg' alt='Потеряшки' />
+            <Logo width='291' height='31' />
           </Link>
         </div>
         <NavigationMenu.Root>
@@ -92,12 +92,16 @@ export default function Header() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
         <a
-          className='ml-auto inline min-w-max text-gray-900'
+          className='hidden min-w-max text-gray-900 lg:inline xl:ml-auto'
           href='tel:+7(904)494-55-66'
         >
           +7 (904) 494-55-66
         </a>
-        <ButtonAsLink href='/help/donate' className='inline h-full'>
+        <ButtonAsLink
+          href='/help/donate'
+          fontSize='font-inherit'
+          className='hidden h-8 xl:flex xl:h-full'
+        >
           Пожертвовать
         </ButtonAsLink>
       </div>
