@@ -34,13 +34,13 @@ export default function News() {
         <title>Новости | Потеряшки</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main justify-center gap-24 gap-y-20  bg-brand-200 py-24'>
+      <main className='grid-cols-main grid justify-center gap-24 gap-y-20  bg-brand-200 py-24'>
         <h1 className='col-contain text-center text-6xl'>Новости</h1>
         <ul className='col-contain flex justify-between gap-20'>
           {news.map((i) => (
-            <li key={i.url}>
-              <Link className='basis-[370px] text-3xl' href={`news/${i.url}`}>
-                <Card className='flex flex-col items-center gap-5'>
+            <li className='basis-[370px] text-3xl' key={i.url}>
+              <Link href={`news/${i.url}`}>
+                <Card>
                   <Image src={i.image} width={320} height={345} alt='' />
                   <h2>{i.title}</h2>
                   <p className='font-light'>{i.subtitle}</p>

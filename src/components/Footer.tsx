@@ -4,7 +4,7 @@ import Logo from '@/../public/logo.svg'
 
 export default function Footer() {
   return (
-    <footer className='grid grid-cols-main py-16 text-xl 2xl:text-2xl'>
+    <footer className='grid-cols-main grid py-16 text-xl 2xl:text-3xl'>
       <div className='col-contain flex justify-between'>
         <div className='max-w-[29ch]'>
           <Link className='block h-[43px] w-[407px]' href='/'>
@@ -25,7 +25,7 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h3 className='text-4xl'>Контакты</h3>
+          <h3 className='text-4.5xl'>Контакты</h3>
           <address className='mt-10 space-y-4 not-italic'>
             <a className='block' href='tel:+7(904)494-55-66'>
               +7 (904) 494-55-66
@@ -35,25 +35,27 @@ export default function Footer() {
             </a>
           </address>
         </div>
-        <div className='flex flex-col'>
-          <h3 className='text-4xl'>Соц. сети</h3>
-          <ul className='mt-10 space-y-4'>
-            <li>
-              <a href='#'>Вконтакте</a>
-            </li>
-            <li>
-              <a href='#'>Телеграм</a>
-            </li>
-            <li>
-              <a href='#'>Youtube</a>
-            </li>
-          </ul>
-          <ul className='mt-auto space-y-4'>
+        <div className='flex flex-col items-end'>
+          <div>
+            <h3 className='text-4.5xl'>Соц. сети</h3>
+            <ul className='mt-10 space-y-4'>
+              <li>
+                <a href='#'>Вконтакте</a>
+              </li>
+              <li>
+                <a href='#'>Телеграм</a>
+              </li>
+              <li>
+                <a href='#'>Youtube</a>
+              </li>
+            </ul>
+          </div>
+          <ul className='mt-auto space-y-4 text-right'>
             <li>
               <a href='#'>Карта сайта</a>
             </li>
             <li>
-              <a href='#'>Разработка сайта</a>
+              <a href='#'>Наш брендбук</a>
             </li>
             <li>
               <a href='#'>Политика конфиденциальности</a>

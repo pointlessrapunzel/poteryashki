@@ -77,7 +77,7 @@ function NavItem({ item }: { item: NavItem }) {
 
 export default function Header() {
   return (
-    <header className='grid-cols-main z-20 grid bg-neutral-100 py-6 text-xs sm:text-lg lg:h-16 xl:h-[93px] xl:py-0 xl:text-xl 2xl:text-[27px]'>
+    <header className='grid-cols-main z-20 grid bg-neutral-100 py-6 text-xs sm:text-lg xl:h-[93px] xl:py-0 xl:text-xl 2xl:text-[27px]'>
       <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-9'>
         <div className='shrink-1 mb-[6px] min-w-[200px]'>
           <Link href={'/'}>

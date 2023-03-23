@@ -19,7 +19,7 @@ export default function SuppliesPage({ helpData, helpDataLinks }: Props) {
         <title>{`Передать вещи животным | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main justify-center gap-y-16 bg-brand-200 py-24'>
+      <main className='grid-cols-main grid justify-center gap-y-16 bg-brand-200 pt-24'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/#help'>Как нам помочь</Link> - Передать вещи животным
@@ -29,7 +29,7 @@ export default function SuppliesPage({ helpData, helpDataLinks }: Props) {
             Эти вещи нужны нам <span className='text-highlight'>всегда</span>
           </h1>
           <Button className='mt-12'>Отправить вещи</Button>
-          <div className='md-supplies-content mt-16 flex flex-col gap-8 text-xl md:flex-row xl:gap-16 xl:text-3xl'>
+          <div className='md-supplies-content mt-28 flex flex-col gap-8 text-xl md:flex-row xl:gap-16 xl:text-3xl'>
             {/* split into two columns */}
             <div className='flex basis-full flex-col gap-8 xl:gap-16'>
               {suppliesItems.slice(0, 2).map((g) => (
@@ -61,8 +61,16 @@ export default function SuppliesPage({ helpData, helpDataLinks }: Props) {
           {helpData?.images
             ? helpData.images.map((i) => (
                 <Card key={i.src}>
-                  <Image width={627} height={481} src={i.src} alt={i.label} />
-                  <p className='text-lg font-light lg:text-2xl'>{i.label}</p>
+                  <Image
+                    className='aspect-[11/8] object-cover'
+                    width={627}
+                    height={481}
+                    src={i.src}
+                    alt={i.label}
+                  />
+                  <p className='text-center text-lg font-light lg:text-2xl'>
+                    {i.label}
+                  </p>
                 </Card>
               ))
             : null}
