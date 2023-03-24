@@ -93,8 +93,16 @@ function AnimalsSection() {
         {links.map((l) => (
           <Link key={l.url} href={`/animals/${l.url}`}>
             <Card>
-              <Image src={l.image} width={320} height={345} alt='' />
-              <h3 className='mt-4 text-center text-2xl uppercase'>{l.label}</h3>
+              <Image
+                className='w-full object-cover'
+                src={l.image}
+                width={320}
+                height={345}
+                alt=''
+              />
+              <h3 className='text-center text-xl font-extrabold uppercase lg:text-[28px]'>
+                {l.label}
+              </h3>
             </Card>
           </Link>
         ))}
@@ -254,21 +262,21 @@ function Team() {
   ]
 
   return (
-    <section className='grid grid-cols-main gap-y-24 py-24 pt-14'>
+    <section className='grid-cols-main grid gap-y-24 py-24'>
       <h2 className='col-contain text-center text-6xl'>Наша команда</h2>
-      <div className='col-contain grid grid-cols-3 gap-x-24 gap-y-14'>
+      <div className='col-contain grid grid-cols-3 gap-x-20 gap-y-14'>
         {items.map((m) => (
           <Card
             key={m.name}
             bgColor='bg-brand-200'
-            className='text-center text-2xl'
+            className='text-center text-3xl'
           >
             <Image width={463} height={464} src={m.photo} alt='' />
-            <h3 className='mt-4'>{m.name}</h3>
+            <h3>{m.name}</h3>
             <p className='font-light'>{m.role}</p>
           </Card>
         ))}
-        <Button className='col-span-full mt-5 justify-self-center text-4xl'>
+        <Button className='col-span-full mt-6 justify-self-center text-4xl'>
           Развернуть
         </Button>
       </div>

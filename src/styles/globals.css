@@ -64,6 +64,11 @@ input[type='number'] {
     border-radius: 5px;
     border-image-repeat: round;
   }
+
+  /* firefox has rendering issues on button elements */
+  button.dashed-border {
+    border-image-repeat: space;
+  }
 }
 
 @layer components {
