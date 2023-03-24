@@ -87,9 +87,11 @@ function AnimalsSection() {
 
   return (
     // relative and z-index needed for the hero dog image to stay behind
-    <section className='relative z-10 grid grid-cols-main bg-brand-200 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Наши животные</h2>
-      <div className='col-contain mt-20 flex gap-9'>
+    <section className='grid-cols-main relative grid gap-y-20 bg-brand-200 py-20'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>
+        Наши животные
+      </h2>
+      <div className='col-contain grid grid-cols-2 gap-9 md:grid-cols-4'>
         {links.map((l) => (
           <Link key={l.url} href={`/animals/${l.url}`}>
             <Card>
