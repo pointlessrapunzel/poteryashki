@@ -1,4 +1,4 @@
-import localFont from '@next/font/local'
+import localFont from "next/font/local"
 import Header from '@/components/Header'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
