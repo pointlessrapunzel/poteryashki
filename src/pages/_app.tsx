@@ -8,11 +8,6 @@ import Head from 'next/head'
 const onestFont = localFont({
   src: [
     {
-      path: '../assets/fonts/onest2/OnestBlack.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-    {
       path: '../assets/fonts/onest2/OnestExtraBold.woff2',
       weight: '800',
       style: 'normal',
@@ -38,6 +33,7 @@ const onestFont = localFont({
       style: 'normal',
     },
   ],
+  display: 'swap',
 })
 
 export default function App({ Component, pageProps }: AppProps) {
