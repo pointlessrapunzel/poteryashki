@@ -22,7 +22,7 @@ export default function NewsPage() {
         <title>{`${news.title} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main justify-center gap-y-16 bg-brand-200 py-24'>
+      <main className='grid-cols-main grid justify-center gap-y-16 bg-brand-200 py-24'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> - <Link href='/news'>Новости</Link> -{' '}
           {news.title}
@@ -37,7 +37,13 @@ export default function NewsPage() {
         <div className='col-span-4 col-start-8 flex flex-col gap-16'>
           {['/images/news-1.png', '/images/news-2.png'].map((i) => (
             <Card key={i}>
-              <Image width={627} height={481} src={i} alt='' />
+              <Image
+                className='aspect-[11/8] object-cover'
+                width={627}
+                height={481}
+                src={i}
+                alt=''
+              />
             </Card>
           ))}
         </div>

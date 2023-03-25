@@ -17,7 +17,7 @@ export default function Program({ programData }: Props) {
         <title>{`${programData.title} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main justify-center gap-y-16 bg-brand-200 py-24'>
+      <main className='grid-cols-main grid justify-center gap-y-16 bg-brand-200 py-24'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/#programs'>Программы</Link> - {programData.title}
@@ -34,7 +34,13 @@ export default function Program({ programData }: Props) {
           {programData?.images
             ? programData.images.map((i) => (
                 <Card key={i}>
-                  <Image width={627} height={481} src={i} alt='' />
+                  <Image
+                    className='aspect-[11/8] object-cover'
+                    width={627}
+                    height={481}
+                    src={i}
+                    alt=''
+                  />
                 </Card>
               ))
             : null}
