@@ -13,7 +13,7 @@ export default function Animals() {
         <title>Наши животные | Потеряшки</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main bg-brand-200 py-28'>
+      <main className='grid-cols-main grid bg-brand-200 py-28'>
         <div className='col-contain'>
           <h1 className='mb-14 text-center text-6xl'>Наши животные</h1>
           <Filter />
@@ -101,8 +101,8 @@ function AnimalCard({ animal }: { animal: Animal }) {
   return (
     <Card className='relative flex flex-col text-center text-3xl'>
       <Image height={464} width={463} src={animal.image} alt={animal.name} />
-      <h2 className='mt-4'>{animal.name}</h2>
-      <p className='mt-2 font-light'>
+      <h2>{animal.name}</h2>
+      <p className='-mt-2 font-light'>
         {animal.gender}, {animal.age}
       </p>
     </Card>
