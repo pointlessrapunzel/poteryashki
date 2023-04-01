@@ -21,4 +21,13 @@ function getAllNewsLinks() {
   return metadata
 }
 
-export { getAllNewsLinks, getNewsData, getAllNewsSlugs }
+function getNewsLinksForHomepage() {
+  return getAllNewsLinks().slice(0, 3)
+}
+
+export {
+  getAllNewsLinks,
+  getNewsData,
+  getAllNewsSlugs,
+  getNewsLinksForHomepage,
+}

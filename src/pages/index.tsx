@@ -10,17 +10,20 @@ import videoPlaceholder from '@/../public/images/video-placeholder.png'
 import { ContactFormSection } from '@/components/ContactForm'
 import { getAllProgramsData } from '@/lib/getProgramsData'
 import { getAllHelpData, HelpData } from '@/lib/getHelpData'
+import { getNewsLinksForHomepage } from '@/lib/getNewsData'
 import HelpSection from '@/components/HelpSection'
 import Logo from '@/components/Logo'
 
 type ProgramsData = ReturnType<typeof getAllProgramsData>
+type NewsData = ReturnType<typeof getNewsLinksForHomepage>
 
 type Props = {
   programsData: ProgramsData
   helpData: HelpData[]
+  newsData: NewsData
 }
 
-export default function Home({ programsData, helpData }: Props) {
+export default function Home({ programsData, helpData, newsData }: Props) {
   return (
     <>
       <Head>
@@ -37,7 +40,7 @@ export default function Home({ programsData, helpData }: Props) {
         <Team />
         <HelpSection helpData={helpData} />
         <Programs programs={programsData} />
-        <News />
+        <News news={newsData} />
         <Partners />
         <ContactFormSection />
       </main>
@@ -48,10 +51,13 @@ export default function Home({ programsData, helpData }: Props) {
 export async function getStaticProps() {
   const programsData = getAllProgramsData()
   const helpData = getAllHelpData()
+  const newsData = getNewsLinksForHomepage()
+
   return {
     props: {
       programsData,
       helpData,
+      newsData,
     },
   }
 }
@@ -330,45 +336,21 @@ function Programs(props: { programs: ProgramsData }) {
   )
 }
 
-function News() {
-  const items = [
-    {
-      image: '/images/news-1.png',
-      title: 'Новый год - время, когда все ждут чуда',
-      subtitle:
-        'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-      url: '1',
-    },
-    {
-      image: '/images/news-2.png',
-      title: 'Новый год - время, когда все ждут чуда',
-      subtitle:
-        'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-      url: '2',
-    },
-    {
-      image: '/images/news-3.png',
-      title: 'Новый год - время, когда все ждут чуда',
-      subtitle:
-        'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-      url: '3',
-    },
-  ]
-
+function News(props: { news: NewsData }) {
   return (
     <section className='grid-cols-main grid gap-y-20 bg-brand-200 py-20'>
       <h2 className='col-contain text-center text-4xl lg:text-6xl'>Новости</h2>
       <div className='col-contain flex flex-col justify-between gap-10 lg:flex-row lg:gap-20'>
-        {items.map((i) => (
+        {props.news.map((i) => (
           <Link
             className='basis-[370px] text-2xl md:text-3xl'
-            key={i.url}
-            href={`news/${i.url}`}
+            key={i.slug}
+            href={`news/${i.slug}`}
           >
             <div className='dashed-border flex h-full flex-col gap-3 rounded bg-neutral-100 p-4 sm:flex-row sm:gap-5 lg:flex-col lg:p-6'>
               <Image
-                className='max-h-[345px] w-full object-cover'
-                src={i.image}
+                className='aspect-[320/345] max-w-full object-cover'
+                src={i.mainImage}
                 width={320}
                 height={345}
                 alt=''
