@@ -59,6 +59,7 @@ function AnimalCard({
       <ImageCarousel>
         {animal.photos.map((ph, idx) => (
           <Image
+            className='aspect-[930/696] object-cover'
             key={`${ph}-${idx}`}
             width={930}
             height={696}
@@ -194,7 +195,13 @@ export default function Animal() {
               {otherAnimals.map((a) => (
                 <Card className='text-center text-2xl' key={a.id}>
                   <Link href={`/animals/${a.id}`}>
-                    <Image src={a.image} alt='' width={350} height={350} />
+                    <Image
+                      className='aspect-square object-cover'
+                      src={a.image}
+                      alt=''
+                      width={350}
+                      height={350}
+                    />
                     <h3 className='mt-4'>{a.name}</h3>
                     <p className='font-light'>
                       {a.gender}, {a.age}
