@@ -1,54 +1,14 @@
 import Card from '@/components/Card'
+import { getAllNewsLinks } from '@/lib/getNewsData'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const news = [
-  {
-    image: '/images/news-1.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '1',
-  },
-  {
-    image: '/images/news-2.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '2',
-  },
-  {
-    image: '/images/news-3.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '3',
-  },
-  {
-    image: '/images/news-1.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '4',
-  },
-  {
-    image: '/images/news-2.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '5',
-  },
-  {
-    image: '/images/news-3.png',
-    title: 'Новый год - время, когда все ждут чуда',
-    subtitle:
-      'Для наших подопечных заботливые хозяева - не чудо, а необходимость. И именно вы можете ими стать!',
-    url: '6',
-  },
-]
+type Props = {
+  news: ReturnType<typeof getAllNewsLinks>
+}
 
-export default function News() {
+export default function News({ news }: Props) {
   return (
     <>
       <Head>
@@ -57,17 +17,20 @@ export default function News() {
       </Head>
       <main className='grid-cols-main grid justify-center gap-y-20 bg-brand-200 py-24'>
         <h1 className='col-contain text-center text-6xl'>Новости</h1>
-        <ul className='col-contain flex flex-wrap justify-around gap-20'>
+        <ul className='col-contain grid justify-items-center gap-20 md:grid-cols-2 lg:grid-cols-3'>
           {news.map((i) => (
-            <li className='basis-[370px] text-2xl md:text-3xl' key={i.url}>
-              <Link href={`news/${i.url}`}>
-                <Card>
+            <li
+              className='flex w-[300px] text-2xl sm:w-[350px] xl:w-[370px] xl:text-3xl'
+              key={i.slug}
+            >
+              <Link href={`news/${i.slug}`}>
+                <Card className='h-full'>
                   <Image
-                    src={i.image}
+                    src={i.mainImage}
                     width={320}
                     height={345}
                     alt=''
-                    className='max-w-full'
+                    className='aspect-[320/345] max-w-full object-cover'
                   />
                   <h2>{i.title}</h2>
                   <p className='font-light'>{i.subtitle}</p>
@@ -79,4 +42,10 @@ export default function News() {
       </main>
     </>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: { news: getAllNewsLinks() },
+  }
 }
