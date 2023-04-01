@@ -27,14 +27,14 @@ export default function NewsPage() {
           <Link href='/'>Главная</Link> - <Link href='/news'>Новости</Link> -{' '}
           {news.title}
         </div>
-        <div className='col-span-5 col-start-2'>
-          <h1 className='text-6xl'>{news.title}</h1>
+        <div className='col-contain sm:col-end-7'>
+          <h1 className='text-4xl lg:text-6xl'>{news.title}</h1>
           <div
-            className='md-content mt-16 space-y-10 text-3xl'
+            className='md-content mt-10 space-y-4 text-lg lg:mt-16 lg:space-y-10 lg:text-3xl'
             dangerouslySetInnerHTML={{ __html: news.content }}
           ></div>
         </div>
-        <div className='col-span-4 col-start-8 flex flex-col gap-16'>
+        <div className='col-contain flex flex-col gap-16 sm:col-start-8 sm:col-end-12'>
           {['/images/news-1.png', '/images/news-2.png'].map((i) => (
             <Card key={i}>
               <Image

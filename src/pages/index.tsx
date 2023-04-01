@@ -7,7 +7,7 @@ import Link from 'next/link'
 import heroDog from '@/../public/images/hero-dog.png'
 import aboutCat from '@/../public/images/about-cat.png'
 import videoPlaceholder from '@/../public/images/video-placeholder.png'
-import ContactForm from '@/components/ContactForm'
+import { ContactFormSection } from '@/components/ContactForm'
 import { getAllProgramsData } from '@/lib/getProgramsData'
 import { getAllHelpData, HelpData } from '@/lib/getHelpData'
 import HelpSection from '@/components/HelpSection'
@@ -39,7 +39,7 @@ export default function Home({ programsData, helpData }: Props) {
         <Programs programs={programsData} />
         <News />
         <Partners />
-        <ContactForm />
+        <ContactFormSection />
       </main>
     </>
   )
@@ -47,7 +47,7 @@ export default function Home({ programsData, helpData }: Props) {
 
 export async function getStaticProps() {
   const programsData = getAllProgramsData()
-  const helpData = await getAllHelpData()
+  const helpData = getAllHelpData()
   return {
     props: {
       programsData,
@@ -58,14 +58,14 @@ export async function getStaticProps() {
 
 function HeroSection() {
   return (
-    <section className='grid-hero pt-5'>
+    <section className='grid-hero overflow-hidden pt-5'>
       <div>
         <h1 className='flex flex-col items-center gap-4 text-center text-3xl md:text-4xl lg:gap-6 xl:text-5xl'>
           горячая линия
           <Logo width='562' height='60' />
           благотворительный фонд помощи животным
         </h1>
-        <div className='flex flex-col items-center gap-14'>
+        <div className='flex min-w-max flex-col items-center gap-14'>
           <ButtonAsLink href='/animals'>Найти друга</ButtonAsLink>
           <ButtonAsLink variant='outline' href='/#help'>
             Как помочь?
@@ -91,7 +91,7 @@ function AnimalsSection() {
       <h2 className='col-contain text-center text-4xl lg:text-6xl'>
         Наши животные
       </h2>
-      <div className='col-contain grid grid-cols-2 gap-9 md:grid-cols-4'>
+      <div className='col-contain grid grid-cols-2 gap-4 sm:gap-9 md:grid-cols-4'>
         {links.map((l) => (
           <Link key={l.url} href={`/animals/${l.url}`}>
             <Card>
@@ -102,7 +102,7 @@ function AnimalsSection() {
                 height={345}
                 alt=''
               />
-              <h3 className='text-center text-xl font-extrabold uppercase lg:text-[28px]'>
+              <h3 className='text-center text-lg font-extrabold uppercase sm:text-xl lg:text-[28px]'>
                 {l.label}
               </h3>
             </Card>
@@ -115,17 +115,19 @@ function AnimalsSection() {
 
 function AboutFoundation() {
   return (
-    <section className='grid grid-cols-main gap-y-5 py-24'>
-      <h2 className='col-contain text-center text-6xl'>О Фонде</h2>
-      <div className='col-start-2 col-end-8 mt-14 text-2xl'>
-        <p className='col-span-full text-3xl'>
+    <section className='grid-cols-main grid gap-y-8 overflow-hidden py-20 lg:gap-y-20'>
+      <h2 className='col-contain row-start-1 text-center text-4xl lg:text-6xl'>
+        О Фонде
+      </h2>
+      <div className='z-10 col-contain row-start-2 text-base lg:col-start-2 lg:col-end-8 lg:text-2xl'>
+        <p className='text-lg sm:w-5/6 lg:w-full lg:text-3xl'>
           Потеряшки - благотворительный фонд помощи животным, в котором командой
           волонтеров, сообща оказывается комплексная помощь животным. Кошек и
           собак лечат, кастрируют, вакцинируют, чипируют и находят хозяина. У
           нас нет приюта и нет места куда можно привезти ставшего ненужным
           питомца, все животные проживают на передержках.
         </p>
-        <div className='mt-16 grid grid-flow-col grid-cols-2 grid-rows-2 gap-y-10 gap-x-14'>
+        <div className='mt-8 grid gap-y-6 gap-x-16 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2 sm:gap-y-10 lg:mt-16'>
           <p>
             Благотворительный фонд помощи животным «Горячая линия «Потеряшки»
             это не «приют» и не «скорая помощь», готовая принять найденного или
@@ -145,7 +147,11 @@ function AboutFoundation() {
           </p>
         </div>
       </div>
-      <Image className='col-span-3 col-start-9' src={aboutCat} alt='' />
+      <Image
+        className='relative bottom-16 col-span-3 col-start-10 row-start-2 translate-x-12 -translate-y-1/4 -rotate-45 lg:col-start-9 lg:transform-none lg:self-center'
+        src={aboutCat}
+        alt=''
+      />
     </section>
   )
 }
@@ -172,16 +178,18 @@ function OurValues() {
   // returns class for the last grid child,
   // which should be half-width and centered on the grid
   const contentCls = (i: number) =>
-    i == values.length - 1 ? 'col-span-full w-1/2 justify-self-center' : ''
+    i == values.length - 1 ? 'col-span-full sm:w-1/2 justify-self-center' : ''
 
   return (
-    <section className='grid grid-cols-main gap-y-32 bg-brand-200 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Наши ценности</h2>
-      <div className='col-contain grid grid-cols-2 gap-20 gap-y-32'>
+    <section className='grid-cols-main grid gap-y-16 bg-brand-200 py-20 lg:gap-y-32'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>
+        Наши ценности
+      </h2>
+      <div className='col-contain grid gap-8 sm:grid-cols-2 lg:gap-20 lg:gap-y-32'>
         {values.map((v, i) => (
           <div key={v.heading} className={contentCls(i)}>
-            <h3 className='text-4xl'>{v.heading}</h3>
-            <p className='mt-7 text-2xl'>{v.content}</p>
+            <h3 className='text-2xl lg:text-[2.625rem]'>{v.heading}</h3>
+            <p className='mt-7 text-base lg:text-3xl'>{v.content}</p>
           </div>
         ))}
       </div>
@@ -191,13 +199,15 @@ function OurValues() {
 
 function Mission() {
   return (
-    <section className='grid grid-cols-main gap-y-8 pt-24'>
-      <h2 className='col-contain text-center text-6xl'>Наша миссия</h2>
-      <p className='col-span-6 col-start-4 text-4.5xl'>
+    <section className='grid-cols-main grid justify-items-center gap-y-10 pt-20'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>
+        Наша миссия
+      </h2>
+      <p className='col-contain flex max-w-[32ch] items-center text-2xl leading-none lg:text-[2.875rem]'>
         Наша миссия - сократить количество бездомных животных на улицах, изменив
         отношение людей к домашним животным.
       </p>
-      <div className='col-span-full pt-20'>
+      <div className='col-span-full pt-28'>
         <Image src={videoPlaceholder} alt='' />
       </div>
     </section>
@@ -212,14 +222,14 @@ function Stats() {
   ]
 
   return (
-    <section className='grid grid-cols-main pt-24 pb-14'>
-      <div className='col-contain flex justify-between'>
+    <section className='grid-cols-main grid pt-24 pb-6'>
+      <div className='col-contain flex flex-col items-center justify-around gap-y-12 md:flex-row'>
         {items.map((s, i) => (
-          <figure key={i} className='space-y-9 text-center'>
-            <strong className='text-stroke text-[6.625rem] font-medium leading-none text-brand-200'>
+          <figure key={i} className='flex flex-col gap-4 text-center lg:gap-9'>
+            <strong className='text-stroke grow text-6xl font-medium leading-none text-brand-200 lg:text-8xl xl:text-[6.625rem]'>
               {s.value}
             </strong>
-            <figcaption className='max-w-[16ch] text-3xl'>
+            <figcaption className='max-w-[16ch] text-2xl lg:text-3xl'>
               {s.description}
             </figcaption>
           </figure>
@@ -265,8 +275,10 @@ function Team() {
 
   return (
     <section className='grid-cols-main grid gap-y-24 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Наша команда</h2>
-      <div className='col-contain grid grid-cols-3 gap-x-20 gap-y-14'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>
+        Наша команда
+      </h2>
+      <div className='col-span-full grid auto-cols-[95%] grid-flow-col gap-x-5 gap-y-14 overflow-x-scroll overscroll-x-contain py-2 px-5 sm:col-contain sm:grid-flow-row sm:grid-cols-2 sm:gap-x-8 sm:overflow-visible sm:p-0 md:grid-cols-3 lg:gap-x-20'>
         {items.map((m) => (
           <Card
             key={m.name}
@@ -278,7 +290,7 @@ function Team() {
             <p className='font-light'>{m.role}</p>
           </Card>
         ))}
-        <Button className='col-span-full mt-6 justify-self-center text-4xl'>
+        <Button className='col-span-full mt-6 hidden justify-self-center text-4xl sm:block'>
           Развернуть
         </Button>
       </div>
@@ -290,18 +302,26 @@ function Programs(props: { programs: ProgramsData }) {
   const items = props.programs
 
   return (
-    <section id='programs' className='grid grid-cols-main gap-y-20 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Наши программы</h2>
-      <div className='col-contain flex justify-around gap-20'>
+    <section id='programs' className='grid-cols-main grid gap-y-20 py-20'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>
+        Наши программы
+      </h2>
+      <div className='col-contain flex flex-col items-center justify-around gap-8 lg:flex-row lg:gap-20'>
         {items.map((i) => (
           <Link
-            className='flex basis-[390px] text-center text-2xl font-extrabold uppercase'
+            className='flex h-full basis-[390px] text-center text-2xl font-extrabold uppercase'
             key={i.slug}
             href={`/programs/${i.slug}`}
           >
             <Card bgColor='bg-brand-200'>
-              <Image src={i.imageUrl} width={340} height={345} alt='' />
-              <p className='mt-5'>{i.shortTitle}</p>
+              <Image
+                className='basis-3/5 object-cover'
+                src={i.imageUrl}
+                width={340}
+                height={345}
+                alt=''
+              />
+              <p className='my-auto max-w-[20ch]'>{i.shortTitle}</p>
             </Card>
           </Link>
         ))}
@@ -336,26 +356,35 @@ function News() {
   ]
 
   return (
-    <section className='grid grid-cols-main gap-y-20 bg-brand-200 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Новости</h2>
-      <div className='col-contain flex justify-between gap-20'>
+    <section className='grid-cols-main grid gap-y-20 bg-brand-200 py-20'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>Новости</h2>
+      <div className='col-contain flex flex-col justify-between gap-10 lg:flex-row lg:gap-20'>
         {items.map((i) => (
           <Link
-            className='basis-[370px] text-3xl'
+            className='basis-[370px] text-2xl md:text-3xl'
             key={i.url}
             href={`news/${i.url}`}
           >
-            <Card className='flex flex-col gap-5'>
-              <Image src={i.image} width={320} height={345} alt='' />
-              <h3>{i.title}</h3>
-              <p className='font-light'>{i.subtitle}</p>
-            </Card>
+            <div className='dashed-border flex h-full flex-col gap-3 rounded bg-neutral-100 p-4 sm:flex-row sm:gap-5 lg:flex-col lg:p-6'>
+              <Image
+                className='max-h-[345px] w-full object-cover'
+                src={i.image}
+                width={320}
+                height={345}
+                alt=''
+              />
+              <div className='flex flex-col gap-3'>
+                <h3 className='w-full'>{i.title}</h3>
+                <p className='col-span-full font-light'>{i.subtitle}</p>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
       <ButtonAsLink
         href='/news'
-        className='col-span-full justify-self-center text-4xl'
+        fontSize='text-3xl lg:text-4xl'
+        className='col-span-full justify-self-center'
       >
         Читать ещё
       </ButtonAsLink>
@@ -373,9 +402,9 @@ function Partners() {
   const partners = Array(6).fill(partner)
 
   return (
-    <section className='grid grid-cols-main gap-y-28 py-24'>
-      <h2 className='col-contain text-center text-6xl'>Партнеры</h2>
-      <div className='col-contain grid grid-cols-3 place-content-between place-items-center gap-y-20'>
+    <section className='grid-cols-main grid gap-y-24 py-20'>
+      <h2 className='col-contain text-center text-4xl lg:text-6xl'>Партнеры</h2>
+      <div className='col-contain grid grid-cols-2 place-content-between place-items-center gap-10 gap-y-12 md:gap-20 lg:grid-cols-3'>
         {partners.map((p, i) => (
           <div key={`${p.name}-${i}`}>
             <Link href={p.url}>
@@ -386,7 +415,8 @@ function Partners() {
       </div>
       <ButtonAsLink
         href='/help/partner'
-        className='col-span-full justify-self-center text-4xl'
+        fontSize='text-3xl lg:text-4xl'
+        className='col-span-full justify-self-center'
       >
         Стать партнером
       </ButtonAsLink>

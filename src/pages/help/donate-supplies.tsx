@@ -24,7 +24,7 @@ export default function SuppliesPage({ helpData, helpDataLinks }: Props) {
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/#help'>Как нам помочь</Link> - Передать вещи животным
         </div>
-        <div className='col-span-6 col-start-2 lg:col-span-5 lg:col-start-2'>
+        <div className='col-contain sm:col-span-6 sm:col-start-2 lg:col-span-5 lg:col-start-2'>
           <h1 className='text-4xl xl:text-6xl'>
             Эти вещи нужны нам <span className='text-highlight'>всегда</span>
           </h1>
@@ -57,7 +57,7 @@ export default function SuppliesPage({ helpData, helpDataLinks }: Props) {
             </div>
           </div>
         </div>
-        <div className='col-span-3 col-start-9 flex flex-col gap-16 lg:col-span-4 lg:col-start-8'>
+        <div className='col-contain flex flex-col gap-16 sm:col-start-9 sm:col-end-12 lg:col-start-8'>
           {helpData?.images
             ? helpData.images.map((i) => (
                 <Card key={i.src}>

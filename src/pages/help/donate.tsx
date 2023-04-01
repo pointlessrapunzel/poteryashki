@@ -13,19 +13,26 @@ export default function Donate() {
         <title>{`Пожертвовать | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main items-center justify-center gap-y-24 bg-brand-200 py-24'>
-        <h1 className='col-contain text-center text-6xl'>Пожертвовать</h1>
-        <Card padding='px-9 py-20' className='col-span-5 col-start-2'>
+      <main className='grid-cols-main grid items-center justify-center gap-y-24 bg-brand-200 py-24'>
+        <h1 className='col-contain text-center text-4xl lg:text-6xl'>
+          Пожертвовать
+        </h1>
+        <Card
+          padding='p-2 py-14 sm:px-9 sm:py-20'
+          className='col-span-full md:col-span-5 md:col-start-2'
+        >
           <DonateForm />
         </Card>
-        <div className='col-span-3 col-start-8 justify-self-center'>
+        <div className='col-contain flex flex-col gap-10 justify-self-center md:col-span-3 md:col-start-8 md:gap-20'>
           <Card
             padding='p-0'
-            className='relative h-[350px] w-[350px] bg-gray-400'
+            className='relative order-2 aspect-square w-[300px] bg-gray-400 md:order-1 lg:w-[350px]'
           >
-            <Image src={QRImage} alt='' fill />
+            <Image src={QRImage} alt='QR код для пожертвования' fill />
           </Card>
-          <h2 className='mt-20 text-center text-3xl'>Оплата по QR</h2>
+          <h2 className='order-1 text-center text-3xl md:order-2'>
+            Оплата по QR
+          </h2>
         </div>
         <strong className='col-contain text-center text-5xl font-medium'>
           Спасибо вам!
@@ -37,7 +44,7 @@ export default function Donate() {
 
 const toggleItemCls =
   'basis-full rounded dashed-border bg-brand-100 data-[state=on]:bg-brand-200'
-const toggleItemClsBig = toggleItemCls + ' p-6'
+const toggleItemClsBig = toggleItemCls + ' p-3 lg:p-6'
 const toggleItemClsSmall = toggleItemCls + ' p-2'
 
 const itemsToBuy = {
@@ -72,7 +79,7 @@ function DonateForm() {
 
   return (
     <form
-      className='flex flex-col items-center gap-20 text-3xl'
+      className='flex flex-col items-center gap-14 text-lg lg:gap-20 lg:text-3xl'
       onSubmit={handleSubmit}
     >
       <div className='flex w-full flex-col gap-8'>
@@ -92,13 +99,13 @@ function DonateForm() {
             Ежемесячно
           </ToggleGroup.Item>
         </ToggleGroup.Root>
-        <strong className='block min-h-[2.25rem] text-center font-medium'>
-          {/* min-height = line-height = 36px for text-3xl */}
+        <strong className='block min-h-[1.75rem] text-center font-medium lg:min-h-[2.25rem]'>
+          {/* min-height = line-height = 28/36px for text-lg/3xl to preserve white-space when donation amount less then 100 */}
           {couldBuyItem}
         </strong>
         <ToggleGroup.Root
           type='single'
-          className='flex w-full justify-between gap-6'
+          className='flex w-full justify-between gap-2 sm:gap-6'
           aria-label='Количество'
           value={amount}
           onValueChange={(value) => {
@@ -119,7 +126,7 @@ function DonateForm() {
           </ToggleGroup.Item>
         </ToggleGroup.Root>
       </div>
-      <div className='dashed-border flex w-2/5 items-center rounded bg-brand-100 p-4 text-4xl'>
+      <div className='dashed-border flex w-4/5 items-center rounded bg-brand-100 p-4 text-4xl lg:w-2/5'>
         <input
           className='w-full grow bg-inherit pr-2 text-4xl text-highlight outline-none'
           type='number'

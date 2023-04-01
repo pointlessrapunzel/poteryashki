@@ -23,11 +23,16 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
     if (helpData.slug == 'temp-foster') return <TempFosterCTA />
     else if (helpData.slug == 'promote')
       return (
-        <ButtonAsLink className='mx-auto mt-24 block' href='#vk'>
+        <ButtonAsLink className='mx-auto max-w-max' href='#vk'>
           Перейти в группу ВК
         </ButtonAsLink>
       )
-    else return <ContactForm />
+    else
+      return (
+        <ContactForm
+          heading={<h2 className='text-4xl lg:text-4.5xl'>Напишите нам</h2>}
+        />
+      )
   }
 
   return (
@@ -36,20 +41,22 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
         <title>{`${helpData.title} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid-cols-main grid justify-center gap-y-16 bg-brand-200 py-24'>
+      <main className='grid-cols-main grid grid-flow-dense justify-center gap-y-16 bg-brand-200 py-24'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/#help'>Как нам помочь</Link> - {helpData.title}
         </div>
-        <div className='col-span-5 col-start-2'>
-          <h1 className='text-6xl'>{helpData.title}</h1>
+        <div className='col-contain sm:col-end-7'>
+          <h1 className='text-4xl lg:text-6xl'>{helpData.title}</h1>
           <div
-            className='md-content mt-16 space-y-10 text-3xl'
+            className='md-content mt-10 space-y-4 text-lg lg:mt-16 lg:space-y-10 lg:text-3xl'
             dangerouslySetInnerHTML={{ __html: helpData.contentHtml }}
           />
+        </div>
+        <div className='col-contain col-start-2 mt-24 xl:col-end-7'>
           {callToAction()}
         </div>
-        <div className='col-span-4 col-start-8 flex flex-col gap-16'>
+        <div className='col-contain flex flex-col gap-16 sm:col-start-8 sm:col-end-12'>
           {helpData?.images
             ? helpData.images.map((i) => (
                 <Card key={i.src}>
@@ -64,17 +71,15 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
               ))
             : null}
         </div>
-        <div className='col-contain'>
-          <HelpSection heading='Как нам ещё помочь' helpData={helpDataLinks} />
-        </div>
       </main>
+      <HelpSection heading='Как нам ещё помочь' helpData={helpDataLinks} />
     </>
   )
 }
 
 function TempFosterCTA() {
   return (
-    <div className='mt-20 flex flex-col items-center gap-14'>
+    <div className='mx-auto flex w-[314px] flex-col items-stretch gap-14'>
       <ButtonAsLink href='/animals?cats'>Взять кошку</ButtonAsLink>
       <ButtonAsLink href='/animals?dogs'>Взять собаку</ButtonAsLink>
     </div>

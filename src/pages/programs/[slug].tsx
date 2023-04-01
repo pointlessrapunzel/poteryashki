@@ -17,20 +17,23 @@ export default function Program({ programData }: Props) {
         <title>{`${programData.title} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid-cols-main grid justify-center gap-y-16 bg-brand-200 py-24'>
+      <main className='grid-cols-main grid grid-flow-dense justify-center gap-y-16 bg-brand-200 py-24'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/#programs'>Программы</Link> - {programData.title}
         </div>
-        <div className='col-span-5 col-start-2'>
-          <h1 className='text-6xl'>{programData.title}</h1>
+        <div className='col-contain sm:col-start-2 sm:col-end-7'>
+          <h1 className='text-4xl lg:text-6xl'>{programData.title}</h1>
           <div
-            className='md-content mt-16 space-y-10 text-3xl'
+            className='md-content mt-10 space-y-4 text-lg lg:mt-16 lg:space-y-10 lg:text-3xl'
             dangerouslySetInnerHTML={{ __html: programData.contentHtml }}
           />
-          <ContactForm />
         </div>
-        <div className='col-span-4 col-start-8 flex flex-col gap-16'>
+        <ContactForm
+          containerClassNames='col-contain col-start-2 xl:col-end-7'
+          heading={<h2 className='text-4xl lg:text-4.5xl'>Напишите нам</h2>}
+        />
+        <div className='col-contain flex flex-col gap-16 sm:col-span-4 sm:col-start-8 xl:row-span-2'>
           {programData?.images
             ? programData.images.map((i) => (
                 <Card key={i}>
@@ -51,9 +54,8 @@ export default function Program({ programData }: Props) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllProgramSlugs()
   return {
-    paths,
+    paths: getAllProgramSlugs(),
     fallback: false,
   }
 }
@@ -66,11 +68,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     }
   }
 
-  const programData = await getProgramData(params.slug)
-
   return {
     props: {
-      programData,
+      programData: getProgramData(params.slug),
     },
   }
 }

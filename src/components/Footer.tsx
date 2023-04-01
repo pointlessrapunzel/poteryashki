@@ -5,9 +5,9 @@ import Logo from '@/../public/logo.svg'
 export default function Footer() {
   return (
     <footer className='grid-cols-main grid py-16 text-xl 2xl:text-3xl'>
-      <div className='col-contain flex justify-between'>
-        <div className='max-w-[29ch]'>
-          <Link className='block h-[43px] w-[407px]' href='/'>
+      <div className='col-contain flex flex-wrap justify-between gap-8'>
+        <div className='max-w-[30ch]'>
+          <Link className='block h-[43px] w-auto max-w-[407px]' href='/'>
             <Image src={Logo} alt='Потеряшки' />
           </Link>
           <p className='mt-20'>
@@ -35,7 +35,7 @@ export default function Footer() {
             </a>
           </address>
         </div>
-        <div className='flex flex-col items-end'>
+        <div className='flex flex-col gap-8 lg:items-end'>
           <div>
             <h3 className='text-4.5xl'>Соц. сети</h3>
             <ul className='mt-10 space-y-4'>
@@ -50,7 +50,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <ul className='mt-auto space-y-4 text-right'>
+          <ul className='mt-auto space-y-4 lg:text-right'>
             <li>
               <a href='#'>Карта сайта</a>
             </li>

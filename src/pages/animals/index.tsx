@@ -17,7 +17,7 @@ export default function Animals() {
         <div className='col-contain'>
           <h1 className='mb-14 text-center text-6xl'>Наши животные</h1>
           <Filter />
-          <ul className='mt-10 grid grid-cols-3 gap-x-11 gap-y-14'>
+          <ul className='mt-10 grid gap-x-11 gap-y-14 sm:grid-cols-2 md:grid-cols-3'>
             {animalList.map((a) => (
               <li key={a.id}>
                 <Link href={`/animals/${a.id}`}>
@@ -59,19 +59,21 @@ function Filter() {
             >
               <path
                 d='M22.5 18.75L15 11.25L7.5 18.75'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
             </svg>
           </button>
         </Collapsible.Trigger>
       </div>
 
-      <Collapsible.Content className='space-y-5 py-10'>
+      <Collapsible.Content className='space-y-10 py-10 sm:space-y-6'>
         {Object.entries(filters).map(([key, options]) => (
-          <div className='flex items-center text-xl' key={key}>
-            <span className='basis-[148px]'>{key}</span>
-            <div className='flex gap-5'>
+          <div className='flex items-start text-xl' key={key}>
+            <span className='shrink-0 basis-[124px] sm:basis-[148px]'>
+              {key}
+            </span>
+            <div className='flex flex-wrap gap-5'>
               {options.map((o) => (
                 <div key={o}>
                   <input
@@ -103,7 +105,7 @@ function AnimalCard({ animal }: { animal: Animal }) {
       <Image height={464} width={463} src={animal.image} alt={animal.name} />
       <h2>{animal.name}</h2>
       <p className='-mt-2 font-light'>
-        {animal.gender}, {animal.age}
+        {animal.gender}, <span className='whitespace-nowrap'>{animal.age}</span>
       </p>
     </Card>
   )

@@ -2,8 +2,8 @@ import Link, { LinkProps } from 'next/link'
 
 const variants = {
   default:
-    'bg-brand-600 hover:bg-brand-800 active:bg-brand-900 shadow-[8px_9px_rgba(0,0,0,1)] text-white transition-colors',
-  outline: 'border-2 border-black text-inherit',
+    'bg-brand-600 py-4 text-white shadow-[8px_9px_rgba(0,0,0,1)] transition-colors hover:bg-brand-800 active:bg-brand-900',
+  outline: 'py-[14px] border-2 border-black text-inherit',
 }
 
 type BaseProps = {
@@ -24,7 +24,12 @@ function cls(
   fontSize = 'text-4xl',
   className = ''
 ) {
-  return `flex w-max items-center rounded py-4 px-10 font-medium leading-tight focus-visible:bg-brand-800 focus-visible:outline-none ${fontSize} ${variants[variant]} ${className}`
+  return [
+    'flex items-center justify-center rounded px-10 font-medium leading-tight focus-visible:bg-brand-800 focus-visible:outline-none',
+    fontSize,
+    variants[variant],
+    className,
+  ].join(' ')
 }
 
 export function Button({

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonAsLink } from '@/components/Button'
+import { Button, ButtonAsLink } from '@/components/Button'
 import Card from '@/components/Card'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -51,7 +51,11 @@ function AnimalCard({
   const age = animal.traits.find((t) => t.key == 'Возраст')?.value
 
   return (
-    <Card padding='p-10' className={`flex flex-col items-center ${className}`}>
+    <div
+      className={`
+      md:dashed-border flex flex-col items-center gap-3 rounded bg-neutral-100 p-0
+      pb-4 text-4.5xl md:gap-5 md:p-10 ${className}`}
+    >
       <ImageCarousel>
         {animal.photos.map((ph, idx) => (
           <Image
@@ -63,11 +67,11 @@ function AnimalCard({
           />
         ))}
       </ImageCarousel>
-      <strong className='mt-4 text-4xl font-medium'>{animal.name}</strong>
-      <p className='text-4xl font-light'>
+      <strong className='mt-4 font-medium'>{animal.name}</strong>
+      <p className='font-light'>
         {gender}, {age}
       </p>
-    </Card>
+    </div>
   )
 }
 
@@ -78,13 +82,16 @@ export default function Animal() {
         <title>{`${animal.name} | Потеряшки`}</title>
         <meta name='description' content='' />
       </Head>
-      <main className='grid grid-cols-main bg-brand-200 py-28'>
-        <div className='col-contain mb-12 text-xl font-light'>
+      <main className='grid-cols-main grid gap-y-16 bg-brand-200 py-28 lg:gap-y-8'>
+        <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
           <Link href='/animals'>Наши животные</Link> - Каскад
         </div>
-        <AnimalCard className='col-start-2 col-end-8' animal={animal} />
-        <div className='col-span-3 col-start-9 flex flex-col justify-between'>
+        <AnimalCard
+          className='col-span-full row-start-2 self-start md:col-contain lg:col-start-2 lg:col-end-8 lg:row-end-4 xl:row-end-5'
+          animal={animal}
+        />
+        <div className='col-contain flex flex-col gap-8 sm:col-span-5 sm:col-start-2 lg:col-span-3 lg:col-start-9'>
           <h1 className='text-6xl'>{animal.name}</h1>
           <ul className='flex flex-col gap-4 text-2xl font-light'>
             {animal.traits.map((t) => (
@@ -93,30 +100,35 @@ export default function Animal() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className='col-contain flex flex-col gap-8 sm:col-span-5 sm:col-start-7 lg:col-span-3 lg:col-start-9'>
           <h2 className='text-4xl'>Ещё обо мне:</h2>
           <ul className='flex flex-col gap-4 text-2xl font-light'>
             {Object.entries(animal.moreTraits).map(([k, v]) => (
               <li className='flex items-center gap-5' key={k}>
-                <CheckboxIcon />
+                <div className='shrink-0'>
+                  <CheckboxIcon />
+                </div>
                 {k}
               </li>
             ))}
           </ul>
-          <p className='text-2xl'>
+        </div>
+        <div className='col-contain flex flex-col justify-between gap-8 sm:col-span-5 sm:col-start-2 lg:col-span-3 lg:col-start-9'>
+          <p className='text-2xl md:pr-4 lg:p-0'>
             Нажмите на кнопку ниже, мы свяжемся с вами и расскажем, как взять
             эту милаху к себе!
           </p>
-          <div>
-            <AdoptPetModal />
-          </div>
+          <AdoptPetModal
+            trigger={
+              <Button fontSize='text-2xl md:text-4xl'>Взять питомца</Button>
+            }
+          />
         </div>
-        <div className='col-start-2 col-end-8 mt-16 text-3xl leading-snug'>
-          {animal.description}
-        </div>
-        <div className='col-span-3 col-start-9 mt-16'>
-          <p className='text-2xl'>Не уверены в своих силах?</p>
+        <div className='col-contain sm:col-span-5 sm:col-start-7 lg:col-span-3 lg:col-start-9 lg:pt-8'>
+          <p className='text-xl md:text-2xl'>Не уверены в своих силах?</p>
           <Link
-            className='mt-6 inline-flex border-spacing-0 items-baseline border-b-2 border-current text-3xl leading-[0.8]'
+            className='mt-6 inline-flex border-spacing-0 items-baseline border-b-2 border-current text-2xl leading-[0.8] md:text-3xl'
             href='#'
           >
             Взять на передержку
@@ -130,7 +142,7 @@ export default function Animal() {
           <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
               <Tooltip.Trigger asChild>
-                <button className='mt-3 flex cursor-help items-center gap-1 text-xl'>
+                <button className='mt-3 flex cursor-help items-center gap-1 text-lg sm:text-xl'>
                   Что это{' '}
                   <Image
                     width={24}
@@ -169,13 +181,16 @@ export default function Animal() {
             </Tooltip.Root>
           </Tooltip.Provider>
         </div>
-        <div className='col-contain pt-24'>
+        <div className='col-contain text-xl lg:col-start-2 lg:col-end-8 lg:row-span-2 lg:row-start-4 lg:pt-8 lg:text-3xl xl:row-start-5'>
+          {animal.description}
+        </div>
+        <div className='col-span-full pt-16 md:col-contain'>
           <h2 className='text-center text-4xl'>Другие наши любимцы:</h2>
           <div className='mt-16 flex justify-center gap-16'>
-            <button>
+            <button className='hidden md:block'>
               <Image src={iconBack} alt='Назад' />
             </button>
-            <div className='flex gap-10'>
+            <div className='hide-scrollbar flex gap-10 overflow-x-scroll px-4'>
               {otherAnimals.map((a) => (
                 <Card className='text-center text-2xl' key={a.id}>
                   <Link href={`/animals/${a.id}`}>
@@ -188,12 +203,14 @@ export default function Animal() {
                 </Card>
               ))}
             </div>
-            <button>
+            <button className='hidden md:block'>
               <Image src={iconForward} alt='Вперёд' />
             </button>
           </div>
           <div className='mt-24 flex justify-center'>
-            <ButtonAsLink href='/animals'>Посмотреть всех</ButtonAsLink>
+            <ButtonAsLink fontSize='text-2xl sm:text-4xl' href='/animals'>
+              Посмотреть всех
+            </ButtonAsLink>
           </div>
         </div>
       </main>

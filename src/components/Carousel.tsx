@@ -50,7 +50,7 @@ export default function ImageCarousel({ children }: Props) {
         ))}
       </div>
       <button
-        className='absolute left-0 top-1/2 -translate-y-1/2 rotate-180 disabled:opacity-70'
+        className='absolute left-0 top-1/2 w-[40px] -translate-y-1/2 rotate-180 disabled:opacity-70 sm:w-[52px]'
         disabled={current == 0}
         onClick={() => {
           scrollRoot.current?.scrollBy({

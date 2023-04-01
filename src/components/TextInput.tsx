@@ -3,12 +3,14 @@ type Props = {
   name: string
   inputBg?: string
   className?: string
+  required?: boolean
 }
 
 export default function TextInput({
   label,
   name,
   inputBg = 'bg-neutral-100',
+  required = false,
   className = '',
 }: Props) {
   return (
@@ -19,6 +21,7 @@ export default function TextInput({
         type='text'
         name={name}
         id={name}
+        required={required}
       />
     </fieldset>
   )

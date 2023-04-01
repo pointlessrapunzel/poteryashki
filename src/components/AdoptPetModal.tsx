@@ -2,12 +2,14 @@ import * as Dialog from '@radix-ui/react-dialog'
 import TextInput from '@/components/TextInput'
 import { Button } from './Button'
 
-export default function AdoptPetModal() {
+type Props = {
+  trigger: React.ReactNode
+}
+
+export default function AdoptPetModal({ trigger }: Props) {
   return (
     <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <Button>Взять питомца</Button>
-      </Dialog.Trigger>
+      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 bg-black/50 data-[state=open]:animate-overlayShow' />
         <Dialog.Content className='fixed top-[50%] left-[50%] flex w-[80vw] translate-x-[-50%] translate-y-[-50%] flex-col items-center rounded bg-brand-200 px-8 py-12 font-medium focus:outline-none data-[state=open]:animate-contentShow lg:w-[90vw] lg:max-w-[1083px] lg:justify-center lg:p-24'>
