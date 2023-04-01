@@ -1,50 +1,27 @@
-import React from 'react'
 import { Button, ButtonAsLink } from '@/components/Button'
 import Card from '@/components/Card'
+import { GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import cats from '../../data/animals/cats.json'
 import iconForward from '@/../public/icons/icon-arrow-forward.svg'
 import iconBack from '@/../public/icons/icon-arrow-back.svg'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import AdoptPetModal from '@/components/AdoptPetModal'
 import ImageCarousel from '@/components/Carousel'
 
-const animal = {
-  name: 'Каскад',
-  traits: [
-    { key: 'Пол', value: 'Мальчик' },
-    { key: 'Возраст', value: '1 год' },
-    { key: 'Порода', value: 'Смешанная' },
-    { key: 'Шерсть', value: 'Короткая' },
-    { key: 'Окрас', value: 'Двухцветный' },
-  ],
-  moreTraits: {
-    Стерилизован: true,
-    Вакцинирован: true,
-    'Обработан от паразитов': true,
-    Чипирован: true,
-  },
-  photos: [
-    '/images/animals/cats/Kaskad.jpg',
-    '/images/animals/cats/Kaskad.jpg',
-    '/images/animals/cats/Kaskad.jpg',
-    '/images/animals/cats/Kaskad.jpg',
-  ],
-  description:
-    'Каскад - это весёлый, игривый подросток, с которым точно не соскучишься, а ещё он любит людей и ласку. Спать предпочитает с человеком, но так, что бы не потревожить его сон. Совершенно не любит оставаться один, поэтому предпочитает всегда находится где-то рядом.',
-}
-
-const otherAnimals = cats.slice(0, 3)
-
-type Animal = typeof animal
+import {
+  AnimalType,
+  getAnimalData,
+  getAnimalsPaths,
+  getMoreAnimalsLinks,
+} from '@/lib/getAnimalsData'
 
 function AnimalCard({
   animal,
   className = '',
 }: {
-  animal: Animal
+  animal: AnimalType
   className?: string
 }) {
   const gender = animal.traits.find((t) => t.key == 'Пол')?.value
@@ -76,7 +53,12 @@ function AnimalCard({
   )
 }
 
-export default function Animal() {
+type Props = {
+  animal: AnimalType
+  moreAnimals: AnimalType[]
+}
+
+export default function Animal({ animal, moreAnimals }: Props) {
   return (
     <>
       <Head>
@@ -86,7 +68,7 @@ export default function Animal() {
       <main className='grid-cols-main grid gap-y-16 bg-brand-200 py-28 lg:gap-y-8'>
         <div className='col-contain text-xl font-light'>
           <Link href='/'>Главная</Link> -{' '}
-          <Link href='/animals'>Наши животные</Link> - Каскад
+          <Link href='/animals'>Наши животные</Link> - {animal.name}
         </div>
         <AnimalCard
           className='col-span-full row-start-2 self-start md:col-contain lg:col-start-2 lg:col-end-8 lg:row-end-4 xl:row-end-5'
@@ -192,12 +174,12 @@ export default function Animal() {
               <Image src={iconBack} alt='Назад' />
             </button>
             <div className='hide-scrollbar flex gap-10 overflow-x-scroll px-4'>
-              {otherAnimals.map((a) => (
+              {moreAnimals.map((a) => (
                 <Card className='text-center text-2xl' key={a.id}>
                   <Link href={`/animals/${a.id}`}>
                     <Image
                       className='aspect-square object-cover'
-                      src={a.image}
+                      src={a.photos[0]}
                       alt=''
                       width={350}
                       height={350}
@@ -223,6 +205,30 @@ export default function Animal() {
       </main>
     </>
   )
+}
+
+export function getStaticPaths() {
+  return {
+    paths: getAnimalsPaths(),
+    fallback: false,
+  }
+}
+
+export function getStaticProps(context: GetStaticPropsContext) {
+  const params = context.params
+  if (!params?.id || typeof params?.id !== 'string') {
+    return {
+      notFound: true,
+    }
+  }
+
+  const animalData = getAnimalData(params.id)
+  return {
+    props: {
+      animal: animalData,
+      moreAnimals: getMoreAnimalsLinks(+params.id),
+    },
+  }
 }
 
 function CheckboxIcon() {

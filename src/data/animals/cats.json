@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Каскад",
+    "gender": "Мальчик",
+    "age": "1 год",
+    "image": "/images/animals/cats/Kaskad.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Игла",
+    "gender": "Девочка",
+    "age": "4 года",
+    "image": "/images/animals/cats/Igla.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Проктор",
+    "gender": "Мальчик",
+    "age": "1,5 года",
+    "image": "/images/animals/cats/Proctor.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Олив",
+    "gender": "Мальчик",
+    "age": "7 месяцев",
+    "image": "/images/animals/cats/Olive.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Тэддл",
+    "gender": "Мальчик",
+    "age": "6 месяцев",
+    "image": "/images/animals/cats/Taddle.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Циртур",
+    "gender": "Мальчик",
+    "age": "7 месяцев",
+    "image": "/images/animals/cats/Tsirtur.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Лайсерг",
+    "gender": "Девочка",
+    "age": "3 года",
+    "image": "/images/animals/cats/Licerg.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Сакавен",
+    "gender": "Мальчик",
+    "age": "3 года",
+    "image": "/images/animals/cats/Sakaven.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Дайши",
+    "gender": "Девочка",
+    "age": "3 года",
+    "image": "/images/animals/cats/Daishi.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Донал",
+    "gender": "Девочка",
+    "age": "2 года",
+    "image": "/images/animals/cats/Donal.jpg"
+  }
+]
