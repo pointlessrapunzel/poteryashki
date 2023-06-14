@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Button, ButtonAsLink } from '@/components/Button'
@@ -13,6 +14,8 @@ import { getAllHelpData, HelpData } from '@/lib/getHelpData'
 import { getNewsLinksForHomepage } from '@/lib/getNewsData'
 import HelpSection from '@/components/HelpSection'
 import Logo from '@/components/Logo'
+import teamJson from '@/data/team.json'
+import { matchesMdMq } from '@/styles/theme'
 
 type ProgramsData = ReturnType<typeof getAllProgramsData>
 type NewsData = ReturnType<typeof getNewsLinksForHomepage>
@@ -246,45 +249,22 @@ function Stats() {
 }
 
 function Team() {
-  const items = [
-    {
-      photo: '/images/team/team-1.png',
-      name: 'Здорнова Евгения',
-      role: 'Учредитель фонда',
-    },
-    {
-      photo: '/images/team/team-2.png',
-      name: 'Гулецкая Ольга',
-      role: 'Директор, учредитель фонда',
-    },
-    {
-      photo: '/images/team/team-3.png',
-      name: 'Ботяева Мария',
-      role: 'Куратор передержки',
-    },
-    {
-      photo: '/images/team/team-4.png',
-      name: 'Татьяна Воробьева',
-      role: 'Куратор породистых кошек',
-    },
-    {
-      photo: '/images/team/team-5.png',
-      name: 'Полина Полякова',
-      role: 'Куратор щенков',
-    },
-    {
-      photo: '/images/team/team-6.png',
-      name: 'Криволапова Екатерина',
-      role: 'Волонтер',
-    },
-  ]
+  const [shown, setShown] = React.useState(false)
+  let items = teamJson
+
+  React.useEffect(() => {
+    // always shown on screens smaller than md
+    if (!matchesMdMq()) setShown(true)
+  }, [])
+
+  if (!shown) items = items.slice(0, 3)
 
   return (
     <section className='grid-cols-main grid gap-y-24 py-24'>
       <h2 className='col-contain text-center text-4xl lg:text-6xl'>
         Наша команда
       </h2>
-      <div className='col-span-full grid auto-cols-[95%] grid-flow-col gap-x-5 gap-y-14 overflow-x-scroll overscroll-x-contain py-2 px-5 sm:col-contain sm:grid-flow-row sm:grid-cols-2 sm:gap-x-8 sm:overflow-visible sm:p-0 md:grid-cols-3 lg:gap-x-20'>
+      <div className='col-span-full grid auto-cols-[95%] grid-flow-col gap-x-5 gap-y-14 overflow-x-scroll overscroll-x-contain px-5 py-2 sm:auto-cols-[60%] md:col-contain md:grid-flow-row md:grid-cols-3 md:gap-x-8 md:overflow-visible md:p-0 lg:gap-x-20'>
         {items.map((m) => (
           <Card
             key={m.name}
@@ -296,8 +276,11 @@ function Team() {
             <p className='font-light'>{m.role}</p>
           </Card>
         ))}
-        <Button className='col-span-full mt-6 hidden justify-self-center text-4xl sm:block'>
-          Развернуть
+        <Button
+          onClick={() => setShown(!shown)}
+          className='col-span-full mt-6 hidden justify-self-center text-4xl md:block'
+        >
+          {shown ? 'Свернуть' : 'Развернуть'}
         </Button>
       </div>
     </section>

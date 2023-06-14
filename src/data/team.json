@@ -1,0 +1,32 @@
+[
+  {
+    "photo": "/images/team/team-1.png",
+    "name": "Здорнова Евгения",
+    "role": "Учредитель фонда"
+  },
+  {
+    "photo": "/images/team/team-2.png",
+    "name": "Гулецкая Ольга",
+    "role": "Директор, учредитель фонда"
+  },
+  {
+    "photo": "/images/team/team-3.png",
+    "name": "Ботяева Мария",
+    "role": "Куратор передержки"
+  },
+  {
+    "photo": "/images/team/team-4.png",
+    "name": "Татьяна Воробьева",
+    "role": "Куратор породистых кошек"
+  },
+  {
+    "photo": "/images/team/team-5.png",
+    "name": "Полина Полякова",
+    "role": "Куратор щенков"
+  },
+  {
+    "photo": "/images/team/team-6.png",
+    "name": "Криволапова Екатерина",
+    "role": "Волонтер"
+  }
+]
