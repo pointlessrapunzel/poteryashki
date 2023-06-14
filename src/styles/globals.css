@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth !important;
+  }
+}
+
 :root {
   --scrollbar-track-color: theme(colors.neutral[100]);
   --scrollbar-thumb-color: theme(colors.brand[200]);
