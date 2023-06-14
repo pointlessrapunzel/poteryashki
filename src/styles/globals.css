@@ -123,6 +123,10 @@ input[type='number'] {
     }
   }
 
+  footer a:hover {
+    color: theme(colors.brand.400);
+  }
+
   .md-content li {
     padding-left: 1em;
   }
