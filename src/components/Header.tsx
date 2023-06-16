@@ -92,7 +92,7 @@ export default function Header() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
         <a
-          className='hidden min-w-max text-gray-900 lg:inline xl:ml-auto'
+          className='hidden min-w-max text-gray-900 lg:inline xl:ml-auto hover:text-brand-400'
           href='tel:+7(904)494-55-66'
         >
           +7 (904) 494-55-66
