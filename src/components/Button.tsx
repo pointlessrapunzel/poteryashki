@@ -2,7 +2,7 @@ import Link, { LinkProps } from 'next/link'
 
 const variants = {
   default:
-    'bg-brand-600 py-4 text-white shadow-[8px_9px_rgba(0,0,0,1)] transition-colors hover:bg-brand-800 active:bg-brand-900',
+    'bg-brand-600 py-4 text-white shadow-[8px_9px_rgba(0,0,0,1)] active:bg-brand-900 hover:translate-x-[8px] hover:translate-y-[9px] hover:shadow-[0px_0px_rgba(0,0,0,1)] transition-all',
   outline: 'py-[14px] border-2 border-black text-inherit',
 }
 
