@@ -7,7 +7,6 @@ import Link from 'next/link'
 
 import heroDog from '@/../public/images/hero-dog.png'
 import aboutCat from '@/../public/images/about-cat.png'
-import videoPlaceholder from '@/../public/images/video-placeholder.png'
 import { ContactFormSection } from '@/components/ContactForm'
 import { getAllProgramsData } from '@/lib/getProgramsData'
 import { getAllHelpData, HelpData } from '@/lib/getHelpData'
@@ -216,9 +215,6 @@ function Mission() {
         Наша миссия - сократить количество бездомных животных на улицах, изменив
         отношение людей к домашним животным.
       </p>
-      <div className='col-span-full pt-28'>
-        <Image src={videoPlaceholder} alt='' />
-      </div>
     </section>
   )
 }
