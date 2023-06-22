@@ -37,6 +37,6 @@ images:
 
 Звоните [+7 (904) 494-55-66](<tel:+7(904)494-55-66>) или напишите нам, и мы обсудим совместные проекты:
 
-Наша группа ВК - https://vk.com/poteriashki
+Наша группа ВК - <a href="https://vk.com/poteriashki" target="_blank">https://vk.com/poteriashki</a>
 
 Творим добро вместе!
