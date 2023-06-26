@@ -52,10 +52,12 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
             className='md-content mt-10 space-y-4 text-lg lg:mt-16 lg:space-y-10 lg:text-3xl'
             dangerouslySetInnerHTML={{ __html: helpData.contentHtml }}
           />
+          <div className='  mt-24 '>
+           {callToAction()}
+         </div>
+         
         </div>
-        <div className='col-contain col-start-2 mt-24 xl:col-end-7'>
-          {callToAction()}
-        </div>
+       
         <div className='col-contain flex flex-col gap-16 sm:col-start-8 sm:col-end-12'>
           {helpData?.images
             ? helpData.images.map((i) => (
