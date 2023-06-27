@@ -1,12 +1,18 @@
-import Card from '@/components/Card'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+import { MutableRefObject, useRef, useState } from 'react'
 import animalList from '../../data/animals/cats.json'
-
+import AnimalsList from '@/components/AnimalsList'
+import {useIntersection} from '../../hook/useIntersection.js'
 export default function Animals() {
+  const [nowArray,setNowArray] = useState(animalList.slice(0,9));
+  const lastElement = useRef<any>(null);
+  const getNextNineEl = () =>{
+    let result = nowArray;
+    animalList.slice(nowArray.length, nowArray.length+9).map((a)=>{ result.push(a)})
+    setNowArray([...result]);
+  }
+  useIntersection(lastElement,getNextNineEl);
   return (
     <>
       <Head>
@@ -18,14 +24,10 @@ export default function Animals() {
           <h1 className='mb-14 text-center text-6xl'>Наши животные</h1>
           <Filter />
           <ul className='mt-10 grid gap-x-11 gap-y-14 sm:grid-cols-2 md:grid-cols-3'>
-            {animalList.map((a) => (
-              <li key={a.id}>
-                <Link href={`/animals/${a.id}`}>
-                  <AnimalCard animal={a} />
-                </Link>
-              </li>
-            ))}
+            <AnimalsList array={nowArray}/>
+           
           </ul>
+          <div ref={lastElement} style={{marginTop: "30px" ,height: 20}}/>
         </div>
       </main>
     </>
@@ -94,25 +96,5 @@ function Filter() {
         ))}
       </Collapsible.Content>
     </Collapsible.Root>
-  )
-}
-
-type Animal = (typeof animalList)[number]
-
-function AnimalCard({ animal }: { animal: Animal }) {
-  return (
-    <Card className='relative flex flex-col text-center text-3xl'>
-      <Image
-        className='aspect-square object-cover'
-        height={464}
-        width={463}
-        src={animal.image}
-        alt={animal.name}
-      />
-      <h2>{animal.name}</h2>
-      <p className='-mt-2 font-light'>
-        {animal.gender}, <span className='whitespace-nowrap'>{animal.age}</span>
-      </p>
-    </Card>
   )
 }
