@@ -77,12 +77,15 @@ function NavItem({ item }: { item: NavItem }) {
 }
 
 export default function Header() {
-  const scrollDirection = useScrollDirection();
+  const scrollDirection = useScrollDirection()
   return (
-    <header className={`sticky ${ scrollDirection === "down" ? "-top-36" : "top-0"} bg-neutral-100 h-24  transition-all duration-500 xl:py-0 xl:text-xl 2xl:text-[27px] grid-cols-main  z-20 grid  py-6 text-xs sm:text-lg xl:h-[93px]`}>
-     <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-9'>
-
-     <div className='shrink-1 mb-[6px] min-w-[200px]'>
+    <header
+      className={`sticky ${
+        scrollDirection === 'down' ? '-top-36' : 'top-0'
+      } grid-cols-main z-20  grid h-24 bg-neutral-100 py-6 text-xs transition-all  duration-500 sm:text-lg  xl:h-[93px] xl:py-0 xl:text-xl 2xl:text-[27px]`}
+    >
+      <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-9'>
+        <div className='shrink-1 mb-[6px] min-w-[200px]'>
           <Link href={'/'}>
             <Logo width='291' height='31' />
           </Link>
@@ -95,7 +98,7 @@ export default function Header() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
         <a
-          className='hidden min-w-max text-gray-900 lg:inline xl:ml-auto hover:text-brand-400'
+          className='hidden min-w-max text-gray-900 hover:text-brand-400 lg:inline xl:ml-auto'
           href='tel:+7(904)494-55-66'
         >
           +7 (904) 494-55-66
@@ -108,33 +111,31 @@ export default function Header() {
           Пожертвовать
         </ButtonAsLink>
       </div>
-
-
     </header>
-    
-    
   )
 }
-
 function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState<string|null>(null);
+  const [scrollDirection, setScrollDirection] = useState<string | null>(null)
 
   useEffect(() => {
-    let lastScrollY = window.pageYOffset;
+    let lastScrollY = window.pageYOffset
 
     const updateScrollDirection = () => {
-      const scrollY = window.pageYOffset;
-      const direction:string = scrollY > lastScrollY ? "down" : "up";
-      if (direction !== scrollDirection && (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)) {
-        setScrollDirection(direction);
+      const scrollY = window.pageYOffset
+      const direction: string = scrollY > lastScrollY ? 'down' : 'up'
+      if (
+        direction !== scrollDirection &&
+        (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
+      ) {
+        setScrollDirection(direction)
       }
-      lastScrollY = scrollY > 0 ? scrollY : 0;
-    };
-    window.addEventListener("scroll", updateScrollDirection); 
-    return () => {
-      window.removeEventListener("scroll", updateScrollDirection); 
+      lastScrollY = scrollY > 0 ? scrollY : 0
     }
-  }, [scrollDirection]);
+    window.addEventListener('scroll', updateScrollDirection)
+    return () => {
+      window.removeEventListener('scroll', updateScrollDirection)
+    }
+  }, [scrollDirection])
 
-  return scrollDirection;
-};
+  return scrollDirection
+}
