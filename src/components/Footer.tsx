@@ -27,10 +27,10 @@ export default function Footer() {
         <div>
           <h3 className='text-4.5xl'>Контакты</h3>
           <address className='mt-10 space-y-4 not-italic'>
-            <a className='block' href='tel:+7(904)494-55-66'>
+            <a className='block transition ease-in-out duration-300' href='tel:+7(904)494-55-66'>
               +7 (904) 494-55-66
             </a>
-            <a className='block' href='mailto:help-for-pets@bk.ru'>
+            <a className='block transition ease-in-out duration-300' href='mailto:help-for-pets@bk.ru'>
               help-for-pets@bk.ru
             </a>
           </address>
@@ -40,25 +40,25 @@ export default function Footer() {
             <h3 className='text-4.5xl'>Соц. сети</h3>
             <ul className='mt-10 space-y-4'>
               <li>
-                <a href='#'>Вконтакте</a>
+                <a className='transition ease-in-out duration-300' href='#'>Вконтакте</a>
               </li>
               <li>
-                <a href='#'>Телеграм</a>
+                <a className='transition ease-in-out duration-300' href='#'>Телеграм</a>
               </li>
               <li>
-                <a href='#'>Youtube</a>
+                <a className='transition ease-in-out duration-300' href='#'>Youtube</a>
               </li>
             </ul>
           </div>
           <ul className='mt-auto space-y-4 lg:text-right'>
             <li>
-              <a href='#'>Карта сайта</a>
+              <a className='transition ease-in-out duration-300' href='#'>Карта сайта</a>
             </li>
             <li>
-              <a href='#'>Наш брендбук</a>
+              <a className='transition ease-in-out duration-300' href='#'>Наш брендбук</a>
             </li>
             <li>
-              <a href='#'>Политика конфиденциальности</a>
+              <a className='transition ease-in-out duration-300' href='#'>Политика конфиденциальности</a>
             </li>
           </ul>
         </div>
