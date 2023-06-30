@@ -42,7 +42,7 @@ type NavItem = (typeof navItems)[number]
 function NavLink({ children, href }: Props) {
   return (
     <NavigationMenu.Link asChild>
-      <Link className='text-black hover:text-brand-400' href={href}>
+      <Link className='transition ease-in-out duration-300 min-w-max xl:ml-auto text-black hover:text-brand-400' href={href}>
         {children}
       </Link>
     </NavigationMenu.Link>
@@ -98,7 +98,7 @@ export default function Header() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
         <a
-          className='hidden min-w-max text-gray-900 hover:text-brand-400 lg:inline xl:ml-auto'
+          className='transition ease-in-out duration-300 hidden min-w-max text-gray-900 lg:inline xl:ml-auto hover:text-brand-400'
           href='tel:+7(904)494-55-66'
         >
           +7 (904) 494-55-66
