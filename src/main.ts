@@ -1,5 +1,5 @@
 import App from './App.vue';
-import { createApp } from 'vue';
+import { createApp, markRaw } from 'vue';
 import router from './router';
 import { createPinia } from 'pinia';
 import { createVuetify } from 'vuetify';
@@ -13,6 +13,13 @@ import '@mdi/font/css/materialdesignicons.css';
 import 'vue3-easy-data-table/dist/style.css';
 
 const app = createApp(App);
+const pinia = createPinia();
+pinia.use(({ store }) => {
+  store.router = markRaw(router);
+});
+
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 
 const vuetify = createVuetify({
   components,
@@ -20,9 +27,14 @@ const vuetify = createVuetify({
 });
 app.component('easy-date-table', Vue3EasyDataTable);
 
+app.config.errorHandler = (err, vm, info) => {
+  console.error('Captured in errorHandler:', err, vm, info);
+};
+
+app.component('VueDatePicker', VueDatePicker);
+
 loadFonts();
 app.use(vuetify);
-app.use(createPinia());
+app.use(pinia);
 app.use(router);
-
 app.mount('#app');

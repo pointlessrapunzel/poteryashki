@@ -1,21 +1,21 @@
 <script setup lang="ts">
-defineProps({
-  drawer: { type: Boolean }
-})
-const menu = [
-  {
-    name: 'Наши животные',
-    route: 'animals',
-  },
-  {
-    name: 'Волонтеры',
-    route: '',
-  },
-  {
-    name: 'Справочники',
-    route: '',
-  },
-];
+  defineProps({
+    drawer: { type: Boolean, required: true },
+  });
+  const menu = [
+    {
+      name: 'Наши животные',
+      route: 'animals',
+    },
+    {
+      name: 'Волонтеры',
+      route: '',
+    },
+    {
+      name: 'Справочники',
+      route: '',
+    },
+  ];
 </script>
 
 <template>
