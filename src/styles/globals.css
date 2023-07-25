@@ -12,6 +12,8 @@
   --scrollbar-track-color: theme(colors.neutral[100]);
   --scrollbar-thumb-color: theme(colors.brand[200]);
   scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+
+  --max-container-width: 1586px;
 }
 
 ::-webkit-scrollbar {
@@ -43,21 +45,27 @@ input[type='number'] {
 }
 
 @layer utilities {
+  .text-balance {
+    /* https://caniuse.com/css-text-wrap-balance */
+    text-wrap: balance;
+  }
+
   .text-stroke {
-    --stoke-color: black;
-    text-shadow: 1px 1px 0 var(--stoke-color), -1px -1px 0 var(--stoke-color),
-      1px -1px 0 var(--stoke-color), -1px 1px 0 var(--stoke-color),
-      1px 1px 0 var(--stoke-color);
+    -webkit-text-stroke: 2px black;
   }
 
   .grid-cols-main {
     --min-gutter: 2rem;
-    --col-gutter: minmax(var(--min-gutter), 1fr);
+    --max-gutter: 1fr;
+    --col-gutter: minmax(var(--min-gutter), var(--max-gutter));
 
-    /* 160px per column for 10 columns = 1600px container */
-    --max-col-width: 10rem;
-    --col-center: repeat(10, minmax(0, var(--max-col-width)));
-    --grid-cols: var(--col-gutter) var(--col-center) var(--col-gutter);
+    /* max-container-width находится в :root
+        чтобы можно было использовать вне .grid-cols-main */
+    /* 10 колонок по 158.6px = 1586px контейнер */
+    /* поля = 165px при ширине экрана в 1916px */
+    --max-col-width: calc(var(--max-container-width) / 10);
+    --cols-center: repeat(10, minmax(0, var(--max-col-width)));
+    --grid-cols: var(--col-gutter) var(--cols-center) var(--col-gutter);
 
     grid-template-columns: var(--grid-cols);
   }
@@ -86,8 +94,8 @@ input[type='number'] {
     margin-bottom: calc(-1 * var(--bottom-overlap-row));
 
     @screen lg {
-      --bottom-overlap-row: 190px;
-      grid-template-rows: 121px auto 150px var(--bottom-overlap-row);
+      --bottom-overlap-row: 200px;
+      grid-template-rows: 96px auto 140px var(--bottom-overlap-row);
     }
   }
 
@@ -96,12 +104,16 @@ input[type='number'] {
     max-width: 40ch;
 
     @screen lg {
-      @apply col-start-2 col-end-8 gap-y-20;
+      @apply col-start-2 col-end-8 gap-y-[5.5rem];
       max-width: initial;
     }
 
     @screen xl {
       @apply col-end-6;
+    }
+
+    @screen 2xl {
+      @apply -ml-16;
     }
   }
 

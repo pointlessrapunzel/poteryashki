@@ -30,7 +30,11 @@ export default function HelpPage({ helpData, helpDataLinks }: Props) {
     else
       return (
         <ContactForm
-          heading={<h2 className='text-4xl lg:text-4.5xl'>Напишите нам</h2>}
+          heading={
+            <h2 className='text-4xl lg:text-4.5xl 2xl:text-5.9xl'>
+              Напишите нам
+            </h2>
+          }
         />
       )
   }

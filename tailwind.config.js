@@ -12,6 +12,7 @@ module.exports = {
           300: '#FFD569',
           400: '#EC912C',
           600: '#EF6A29',
+          700: '#E46222',
           800: '#D65110',
           900: '#B4440D',
         },
@@ -23,11 +24,18 @@ module.exports = {
         },
         highlight: '#97173C',
       },
+      spacing: {
+        22: '5.5rem',
+        26: '6.5rem',
+        38: '9.5rem',
+      },
       fontFamily: {
         sans: ['var(--font-onest)', ...fontFamily.sans],
       },
       fontSize: {
+        '2.9xl': ['1.8125rem', '1.3'],
         '4.5xl': ['2.5rem', '1.2'],
+        '5.9xl': ['3.6875rem', '1'],
       },
       gridColumn: {
         contain: '2 / -2',

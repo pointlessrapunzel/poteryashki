@@ -31,7 +31,11 @@ export default function Program({ programData }: Props) {
         </div>
         <ContactForm
           containerClassNames='col-contain col-start-2 xl:col-end-7'
-          heading={<h2 className='text-4xl lg:text-4.5xl'>Напишите нам</h2>}
+          heading={
+            <h2 className='text-4xl lg:text-4.5xl 2xl:text-5.9xl'>
+              Напишите нам
+            </h2>
+          }
         />
         <div className='col-contain flex flex-col gap-16 sm:col-span-4 sm:col-start-8 xl:row-span-2'>
           {programData?.images

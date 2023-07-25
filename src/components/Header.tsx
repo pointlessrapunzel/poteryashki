@@ -82,16 +82,16 @@ export default function Header() {
     <header
       className={`sticky ${
         scrollDirection === 'down' ? '-top-36' : 'top-0'
-      } grid-cols-main z-20  grid h-24 bg-neutral-100 py-6 text-xs transition-all  duration-500 sm:text-lg  xl:h-[93px] xl:py-0 xl:text-xl 2xl:text-[27px]`}
+      } grid-cols-main z-20 grid min-h-[6rem] bg-neutral-100 py-6 text-xs transition-all duration-500 sm:text-lg xl:min-h-[93px] xl:py-0 xl:text-xl 2xl:text-2xl`}
     >
-      <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-9'>
+      <div className='col-contain flex flex-col items-center justify-between gap-4 lg:flex-row xl:gap-8 2xl:-ml-7 2xl:gap-14'>
         <div className='shrink-1 mb-[6px] min-w-[200px]'>
           <Link href={'/'}>
             <Logo width='291' height='31' />
           </Link>
         </div>
         <NavigationMenu.Root>
-          <NavigationMenu.List className='flex gap-7'>
+          <NavigationMenu.List className='flex gap-6 2xl:gap-9'>
             {navItems.map((i) => (
               <NavItem key={i.label} item={i} />
             ))}
