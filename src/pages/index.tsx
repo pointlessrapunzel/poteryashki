@@ -87,10 +87,26 @@ function HeroSection() {
 
 function AnimalsSection() {
   const links = [
-    { image: '/images/our-pets-dog.png', label: 'Собаки', url: '?dogs' },
-    { image: '/images/our-pets-puppy.png', label: 'Щенки', url: '?puppies' },
-    { image: '/images/our-pets-cat.png', label: 'Кошки', url: '?cats' },
-    { image: '/images/our-pets-kitten.png', label: 'Котята', url: '?kittens' },
+    {
+      image: '/images/our-pets-dog.png',
+      label: 'Собаки',
+      url: '/animals?type=dog',
+    },
+    {
+      image: '/images/our-pets-puppy.png',
+      label: 'Щенки',
+      url: '/animals?type=dog&age=lt6mon',
+    },
+    {
+      image: '/images/our-pets-cat.png',
+      label: 'Кошки',
+      url: '/animals?type=cat',
+    },
+    {
+      image: '/images/our-pets-kitten.png',
+      label: 'Котята',
+      url: '/animals?type=cat&age=lt6mon',
+    },
   ]
 
   return (
@@ -101,7 +117,7 @@ function AnimalsSection() {
       </h2>
       <div className='col-contain grid grid-cols-2 gap-4 sm:gap-9 md:grid-cols-4'>
         {links.map((l) => (
-          <Link key={l.url} href={`/animals/${l.url}`}>
+          <Link key={l.url} href={l.url}>
             <Card>
               <Image
                 className='w-full object-cover'

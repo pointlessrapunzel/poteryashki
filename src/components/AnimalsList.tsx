@@ -1,17 +1,21 @@
-import Link from "next/link";
-import React from "react";          
-import AnimalCard from "./AnimalCard";
-const AnimalsList =  ({array}:{array:{id:number,name:string,gender:string,age:string,image:string}[]}) =>
-{
-    return(
+import Link from 'next/link'
+import React from 'react'
+import AnimalCard from './AnimalCard'
+import { Animal } from '@/lib/animalsData'
+
+type Props = { animals: Animal[] }
+
+const AnimalsList = ({ animals }: Props) => {
+  return (
     <>
-        {array.map((a) =>(<li key={a.id}>
-                            <Link href={`/animals/${a.id}`}>
-                              <AnimalCard animal={a} />
-                            </Link>
-                          </li>)
-        )}
+      {animals.map((a) => (
+        <li key={a.id}>
+          <Link href={`/animals/${a.id}`}>
+            <AnimalCard animal={a} />
+          </Link>
+        </li>
+      ))}
     </>
-    )
-}                              
-export default AnimalsList;
+  )
+}
+export default AnimalsList

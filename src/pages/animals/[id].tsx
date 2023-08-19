@@ -11,21 +11,22 @@ import AdoptPetModal from '@/components/AdoptPetModal'
 import ImageCarousel from '@/components/Carousel'
 
 import {
-  AnimalType,
+  Animal,
   getAnimalData,
   getAnimalsPaths,
+  getTraitLabel,
   getMoreAnimalsLinks,
-} from '@/lib/getAnimalsData'
+} from '@/lib/animalsData'
 
 function AnimalCard({
   animal,
   className = '',
 }: {
-  animal: AnimalType
+  animal: Animal
   className?: string
 }) {
-  const gender = animal.traits.find((t) => t.key == 'Пол')?.value
-  const age = animal.traits.find((t) => t.key == 'Возраст')?.value
+  const sex = getTraitLabel(animal.sex)
+  const age = animal.age
 
   return (
     <div
@@ -47,18 +48,34 @@ function AnimalCard({
       </ImageCarousel>
       <strong className='mt-4 font-medium'>{animal.name}</strong>
       <p className='font-light'>
-        {gender}, {age}
+        {sex}, {age}
       </p>
     </div>
   )
 }
 
 type Props = {
-  animal: AnimalType
-  moreAnimals: AnimalType[]
+  animal: Animal
+  moreAnimals: Animal[]
 }
 
-export default function Animal({ animal, moreAnimals }: Props) {
+export default function AnimalPage({ animal, moreAnimals }: Props) {
+  const traits = (['sex', 'age', 'breed', 'fur', 'color'] as const).map(
+    (key) => ({
+      key,
+      traitName: getTraitLabel(key),
+      traitValue: getTraitLabel(animal[key]),
+    })
+  )
+
+  const moreTraits = (
+    ['neutered', 'vaccinated', 'parasitesRemoved', 'chipped'] as const
+  ).map((key) => ({
+    key,
+    traitName: getTraitLabel(key),
+    traitValue: animal[key],
+  }))
+
   return (
     <>
       <Head>
@@ -77,9 +94,10 @@ export default function Animal({ animal, moreAnimals }: Props) {
         <div className='col-contain flex flex-col gap-8 sm:col-span-5 sm:col-start-2 lg:col-span-3 lg:col-start-9'>
           <h1 className='text-6xl'>{animal.name}</h1>
           <ul className='flex flex-col gap-4 text-2xl font-light'>
-            {animal.traits.map((t) => (
+            {traits.map((t) => (
               <li key={t.key}>
-                <strong className='font-medium'>{t.key}:</strong> {t.value}
+                <strong className='font-medium'>{t.traitName}:</strong>{' '}
+                {t.traitValue}
               </li>
             ))}
           </ul>
@@ -87,12 +105,12 @@ export default function Animal({ animal, moreAnimals }: Props) {
         <div className='col-contain flex flex-col gap-8 sm:col-span-5 sm:col-start-7 lg:col-span-3 lg:col-start-9'>
           <h2 className='text-4xl'>Ещё обо мне:</h2>
           <ul className='flex flex-col gap-4 text-2xl font-light'>
-            {Object.entries(animal.moreTraits).map(([k, v]) => (
-              <li className='flex items-center gap-5' key={k}>
+            {moreTraits.map((t) => (
+              <li className='flex items-center gap-5' key={t.key}>
                 <div className='shrink-0'>
                   <CheckboxIcon />
                 </div>
-                {k}
+                {t.traitName}
               </li>
             ))}
           </ul>
@@ -186,7 +204,7 @@ export default function Animal({ animal, moreAnimals }: Props) {
                     />
                     <h3 className='mt-4'>{a.name}</h3>
                     <p className='font-light'>
-                      {a.gender}, {a.age}
+                      {getTraitLabel(a.sex)}, {a.age}
                     </p>
                   </Link>
                 </Card>
@@ -226,7 +244,7 @@ export function getStaticProps(context: GetStaticPropsContext) {
   return {
     props: {
       animal: animalData,
-      moreAnimals: getMoreAnimalsLinks(+params.id),
+      moreAnimals: getMoreAnimalsLinks(params.id),
     },
   }
 }

@@ -2,71 +2,81 @@
   {
     "id": 1,
     "name": "Каскад",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "1 год",
-    "image": "/images/animals/cats/Kaskad.jpg"
+    "birthdate": "2022-04-04",
+    "photos": ["/images/animals/cats/Kaskad.jpg"]
   },
   {
     "id": 10,
     "name": "Игла",
-    "gender": "Девочка",
+    "sex": "female",
     "age": "4 года",
-    "image": "/images/animals/cats/Igla.jpg"
+    "birthdate": "2019-05-02",
+    "photos": ["/images/animals/cats/Igla.jpg"]
   },
   {
     "id": 2,
     "name": "Проктор",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "1,5 года",
-    "image": "/images/animals/cats/Proctor.jpg"
+    "birthdate": "2021-12-13",
+    "photos": ["/images/animals/cats/Proctor.jpg"]
   },
   {
     "id": 3,
     "name": "Олив",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "7 месяцев",
-    "image": "/images/animals/cats/Olive.jpg"
+    "birthdate": "2022-11-09",
+    "photos": ["/images/animals/cats/Olive.jpg"]
   },
   {
     "id": 4,
     "name": "Тэддл",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "6 месяцев",
-    "image": "/images/animals/cats/Taddle.jpg"
+    "birthdate": "2022-12-11",
+    "photos": ["/images/animals/cats/Taddle.jpg"]
   },
   {
     "id": 5,
     "name": "Циртур",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "7 месяцев",
-    "image": "/images/animals/cats/Tsirtur.jpg"
+    "birthdate": "2022-11-11",
+    "photos": ["/images/animals/cats/Tsirtur.jpg"]
   },
   {
     "id": 6,
     "name": "Лайсерг",
-    "gender": "Девочка",
+    "sex": "female",
     "age": "3 года",
-    "image": "/images/animals/cats/Licerg.jpg"
+    "birthdate": "2020-02-10",
+    "photos": ["/images/animals/cats/Licerg.jpg"]
   },
   {
     "id": 7,
     "name": "Сакавен",
-    "gender": "Мальчик",
+    "sex": "male",
     "age": "3 года",
-    "image": "/images/animals/cats/Sakaven.jpg"
+    "birthdate": "2020-03-15",
+    "photos": ["/images/animals/cats/Sakaven.jpg"]
   },
   {
     "id": 8,
     "name": "Дайши",
-    "gender": "Девочка",
+    "sex": "female",
     "age": "3 года",
-    "image": "/images/animals/cats/Daishi.jpg"
+    "birthdate": "2020-05-21",
+    "photos": ["/images/animals/cats/Daishi.jpg"]
   },
   {
     "id": 9,
     "name": "Донал",
-    "gender": "Девочка",
+    "sex": "female",
     "age": "2 года",
-    "image": "/images/animals/cats/Donal.jpg"
+    "birthdate": "2020-12-16",
+    "photos": ["/images/animals/cats/Donal.jpg"]
   }
 ]

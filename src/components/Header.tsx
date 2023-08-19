@@ -14,10 +14,10 @@ const navItems = [
     label: 'Наши животные',
     url: '/animals',
     links: [
-      { label: 'Кошки', url: '/animals?cats' },
-      { label: 'Котята', url: '/animals?kittens' },
-      { label: 'Собаки', url: '/animals?dogs' },
-      { label: 'Щенки', url: '/animals?puppies' },
+      { label: 'Кошки', url: '/animals?type=cat' },
+      { label: 'Котята', url: '/animals/?type=cat&age=lt6mon' },
+      { label: 'Собаки', url: '/animals?type=dog' },
+      { label: 'Щенки', url: '/animals?type=dog&age=lt6mon' },
     ],
   },
   {

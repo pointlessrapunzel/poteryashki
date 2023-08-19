@@ -18,6 +18,10 @@ module.exports = (phase, { defaultConfig }) => {
   }
 
   return {
+    ...defaultConfig,
     reactStrictMode: true,
+    images: {
+      domains: ['loremflickr.com'],
+    },
   }
 }
