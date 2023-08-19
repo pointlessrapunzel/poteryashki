@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth !important;
+  }
+}
+
+:root {
+  --scrollbar-track-color: theme(colors.neutral[100]);
+  --scrollbar-thumb-color: theme(colors.brand[200]);
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+
+  --max-container-width: 1586px;
+}
+
+::-webkit-scrollbar {
+  width: initial;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+
+/* remove arrows from the number input */
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@layer utilities {
+  .text-balance {
+    /* https://caniuse.com/css-text-wrap-balance */
+    text-wrap: balance;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px black;
+  }
+
+  .grid-cols-main {
+    --min-gutter: 2rem;
+    --max-gutter: 1fr;
+    --col-gutter: minmax(var(--min-gutter), var(--max-gutter));
+
+    /* max-container-width находится в :root
+        чтобы можно было использовать вне .grid-cols-main */
+    /* 10 колонок по 158.6px = 1586px контейнер */
+    /* поля = 165px при ширине экрана в 1916px */
+    --max-col-width: calc(var(--max-container-width) / 10);
+    --cols-center: repeat(10, minmax(0, var(--max-col-width)));
+    --grid-cols: var(--col-gutter) var(--cols-center) var(--col-gutter);
+
+    grid-template-columns: var(--grid-cols);
+  }
+
+  .dashed-border {
+    border-width: 2px;
+    border-image-source: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAACsCAYAAADmMUfYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH5SURBVHgB7d3RbeJAFEDRYStISXSSlJAOoDO2hO2E7YC1CQSU77UyVzlHejD4Z2TryvIP8hgP+2VOy5yXuWwws7tMPrPb6rxPy7x+3eyw4YY//YK7fv9nDveN3p4OHpd5GTCHtcX38ehzvx483X68D5jTcTweDz7rdWdlVmuba6Pn3Xg8H+0GzOva6a8BIYIlRbCkCJYUwZIiWFIES4pgSREsKYIlRbCkCJYUwZIiWFIES4pgSREsKYIlRbCkCBYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOCb7Za5PK1hVtdOvQmRFMGSIlhSBEuKYEkRLCmCJUWwpAiWFMGSIlhSBEuKYEkRLCmCJUWwpAiWFMGSIlhSBEuKYEkRLCmCJUWwpAiWFMGSIlhSBEuKYEkRLCmCJUWwpAiWFMGSIlhSBEuKYEkRLCmCBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+Ga7ZS5Pa5jVtVNvQiRFsKQIlhTBkiJYUgRLimBJESwpgiVFsKQIlhTBkiJYUgRLimBJESwpgiVFsKQIlhTBkrIG+/e2fhkwp88212D/3NbvA+b0evv+vX7sx8dfaNdZo3WnZRZri4fx6PMe7jg+HdxqZneZfGa39fkfv274tsxpww1nd5l8ZrfFOZ/HR5P7+yb/AKBkerCt8MJrAAAAAElFTkSuQmCC');
+    border-image-slice: 40;
+    border-image-width: 40px;
+    border-radius: 5px;
+    border-image-repeat: round;
+  }
+
+  /* firefox has rendering issues on button elements */
+  button.dashed-border {
+    border-image-repeat: space;
+  }
+}
+
+@layer components {
+  .grid-hero {
+    @apply grid-cols-main grid pt-5;
+
+    --bottom-overlap-row: 2rem;
+    grid-template-rows: 0 auto 4rem var(--bottom-overlap-row);
+    margin-bottom: calc(-1 * var(--bottom-overlap-row));
+
+    @screen lg {
+      --bottom-overlap-row: 200px;
+      grid-template-rows: 96px auto 140px var(--bottom-overlap-row);
+    }
+  }
+
+  .grid-hero > div:first-child {
+    @apply z-10 col-contain row-start-2 flex flex-col gap-y-16;
+    max-width: 40ch;
+
+    @screen lg {
+      @apply col-start-2 col-end-8 gap-y-[5.5rem];
+      max-width: initial;
+    }
+
+    @screen xl {
+      @apply col-end-6;
+    }
+
+    @screen 2xl {
+      @apply -ml-16;
+    }
+  }
+
+  .grid-hero__image {
+    --scale: 1.3;
+    @apply col-start-7 col-end-13 row-start-1 row-end-5 self-center;
+    transform: translate3d(7rem, 0.5rem, 0) scale(var(--scale)) rotate(0.9turn);
+
+    @screen sm {
+      --scale: 1;
+    }
+
+    @screen lg {
+      transform: initial;
+    }
+
+    @screen xl {
+      @apply col-end-12;
+    }
+  }
+
+  footer a:hover {
+    color: theme(colors.brand.400);
+  }
+
+  .md-content li {
+    padding-left: 1em;
+  }
+  .md-content li::before {
+    content: '- ';
+  }
+
+  .md-content a {
+    text-decoration: underline;
+  }
+
+  .md-supplies-content li {
+    @apply font-light;
+  }
+}
