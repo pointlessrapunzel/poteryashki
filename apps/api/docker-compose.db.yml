@@ -1,14 +1,19 @@
 version: '3.7'
 services:
   poteriashki_db:
-    image: postgres:14
+    image: postgres:15.1
     container_name: poteriashki_db
     restart: always
     ports:
       - ${DB_PORT}:${DB_PORT}
-    volumes:
-      - ./.data/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_DB: ${DB_NAME}
+      PG_DATA: /var/lib/postgresql/data
+    expose:
+      - 5432
+    env_file:
+      - .env
+    volumes:
+      - ./poteriashki_db:/var/lib/postgresql/data

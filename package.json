@@ -8,11 +8,14 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "eslint": "^8.47.0",
+    "prettier": "^3.0.2",
     "turbo": "^1.10.12"
   },
   "packageManager": "yarn@1.22.19",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/api",
+    "apps/admin",
+    "apps/frontend"
   ]
 }

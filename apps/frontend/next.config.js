@@ -23,5 +23,13 @@ module.exports = (phase, { defaultConfig }) => {
     images: {
       domains: ['loremflickr.com'],
     },
+    async rewrites() {
+      return [
+        {
+          source: '/api',
+          destination: 'http://localhost:3001/api',
+        },
+      ]
+    },
   }
 }

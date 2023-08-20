@@ -1,5 +1,5 @@
 {
-  "name": "admin-poteryashki",
+  "name": "@poteryashki/admin",
   "version": "0.0.0",
   "private": true,
   "scripts": {
